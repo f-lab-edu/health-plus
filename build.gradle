@@ -4,6 +4,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.12.RELEASE'
 }
 
+// subprojects 안에선 plugins block
 subprojects{
     group 'org.healthplus'
     version '0.1.0-SNAPSHOT'
