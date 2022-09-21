@@ -3,5 +3,5 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation project(':delivery-worker')
     implementation project(':vendor')
-    implementation project(':common')
+    implementation project(':model')
 }
