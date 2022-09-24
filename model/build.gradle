@@ -1,6 +1,4 @@
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 // main method 없이 라이브러리 역할을 하는 model module
