@@ -39,6 +39,9 @@ public class OptionGroup {
 
   public OptionGroup(Long menuId) {
     this.menuId = menuId;
+    this.basicChoiceYn = IsYn.Y;
+    this.etcChoiceYn = IsYn.N;
+    this.useYn = IsYn.Y;
   }
 
 

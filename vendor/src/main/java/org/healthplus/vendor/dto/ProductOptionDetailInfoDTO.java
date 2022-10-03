@@ -1,11 +1,16 @@
 package org.healthplus.vendor.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
 @Getter
+@ToString
+@NoArgsConstructor
 public class ProductOptionDetailInfoDTO {
 
   private Long optionDetailId;

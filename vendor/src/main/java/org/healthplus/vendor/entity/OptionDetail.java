@@ -37,6 +37,7 @@ public class OptionDetail {
     this.optionGroupId = optionGroupId;
     this.name = name;
     this.price = price;
+    this.useYn = IsYn.Y;
   }
 
   public static List<OptionDetail> addOptionDetails(Long optionGroupId, List<ProductOptionDetailInfoDTO> optionDetails) {

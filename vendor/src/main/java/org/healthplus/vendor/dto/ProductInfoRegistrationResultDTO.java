@@ -2,6 +2,8 @@ package org.healthplus.vendor.dto;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.healthplus.model.entity.CommonDateTime;
 import org.healthplus.vendor.entity.Menu;
 import org.healthplus.vendor.entity.OptionDetail;
@@ -19,6 +21,7 @@ import java.util.List;
 
 @Getter
 @Builder
+@ToString
 public class ProductInfoRegistrationResultDTO {
 
   private Long menuId;
@@ -40,7 +43,7 @@ public class ProductInfoRegistrationResultDTO {
             .menuId(savedMenu.getMenuId())
             .restaurantId(savedMenu.getRestaurantId())
             .category(Category.selectCategoryName(savedMenu.getCategoryId()))
-            .type(savedMenu.getType().name())
+            .type(savedMenu.getMenuType().name())
             .description(savedMenu.getDescription())
             .soldYn(savedMenu.getSoldYn())
             .useYn(savedMenu.getUseYn())

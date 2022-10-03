@@ -70,8 +70,6 @@ public class Restaurant {
                     String subType,
                     Integer minimumPrice,
                     Integer deliveryFee,
-                    IsYn openYn,
-                    IsYn useYn,
                     Address address) {
     this.restaurantId = restaurantId;
     this.vendorId = vendorId;
@@ -82,8 +80,8 @@ public class Restaurant {
     this.subType = subType;
     this.minimumPrice = minimumPrice;
     this.deliveryFee = deliveryFee;
-    this.openYn = openYn;
-    this.useYn = useYn;
+    this.openYn = IsYn.N;
+    this.useYn = IsYn.Y;
     this.address = address;
   }
 }

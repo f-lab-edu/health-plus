@@ -70,5 +70,6 @@ public class Vendor {
     this.email = email;
     this.name = name;
     this.bank = bank;
+    this.useYn = IsYn.Y;
   }
 }

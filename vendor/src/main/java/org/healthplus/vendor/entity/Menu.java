@@ -12,8 +12,6 @@ import org.healthplus.vendor.enums.MenuType;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @ToString
@@ -34,10 +32,8 @@ public class Menu {
   private Long categoryId;
 
   @Enumerated(EnumType.STRING)
-  private MenuType type;
-
-  @Column(name = "desc")
-  private String description;
+  @Column(name = "menu_type")
+  private MenuType menuType;
 
   @Enumerated(EnumType.STRING)
   @Column(name = "sold_yn")
@@ -53,17 +49,17 @@ public class Menu {
   private String name;
   private Integer price;
   private Integer calorie;
+  private String description;
 
   @Builder
-  public Menu(Long menuId,
-              Long restaurantId,
+  public Menu(Long restaurantId,
               Long categoryId,
               CommonDateTime commonDateTime,
               String name,
               Integer price,
               Integer calorie,
-              String description) {
-    this.menuId = menuId;
+              String description,
+              MenuType menuType) {
     this.restaurantId = restaurantId;
     this.categoryId = categoryId;
     this.commonDateTime = commonDateTime;
@@ -71,6 +67,9 @@ public class Menu {
     this.price = price;
     this.calorie = calorie;
     this.description = description;
+    this.menuType = menuType;
+    this.soldYn = IsYn.Y;
+    this.useYn = IsYn.Y;
   }
 
   public static Menu addMenu(Long vendorId, ProductInfoRegistrationDTO dto) {
@@ -80,7 +79,7 @@ public class Menu {
             .calorie(dto.getCalorie())
             .description(dto.getDescription())
             .commonDateTime(new CommonDateTime(LocalDateTime.now()))
-            .categoryId(Category.selectCategoryId(dto.getType()))
+            .categoryId(Category.selectCategoryId(dto.getCategoryType()))
             .restaurantId(vendorId)
             .build();
   }
