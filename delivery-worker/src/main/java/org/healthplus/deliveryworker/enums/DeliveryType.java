@@ -1,5 +1,5 @@
 package org.healthplus.deliveryworker.enums;
 
-public enum CarType {
+public enum DeliveryType {
     CAR, MOTORCYCLE, WALK
 }

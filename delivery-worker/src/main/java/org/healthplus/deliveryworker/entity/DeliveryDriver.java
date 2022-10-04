@@ -1,8 +1,7 @@
 package org.healthplus.deliveryworker.entity;
 
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import org.healthplus.deliveryworker.enums.CarType;
+import lombok.*;
+import org.healthplus.deliveryworker.enums.DeliveryType;
 import org.healthplus.deliveryworker.enums.IsYn;
 import org.healthplus.model.entity.CommonDateTime;
 
@@ -11,7 +10,9 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "delivery_driver")
-@NoArgsConstructor
+@Getter
+@ToString
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class DeliveryDriver {
 
     @Id
@@ -26,12 +27,12 @@ public class DeliveryDriver {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "car_number")
-    private String carNumber;
+    @Column(name = "vehicle_number")
+    private String vehicleNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "car_type")
-    private CarType carType;
+    @Column(name = "delivery_type")
+    private DeliveryType deliveryType;
 
     @Column(name = "delete_dt")
     private LocalDateTime deletedAt;
@@ -45,12 +46,13 @@ public class DeliveryDriver {
     private String name;
     private String location;
 
+
     @Builder
     public DeliveryDriver(Long driverId,
                           IsYn userYn,
                           String phoneNumber,
-                          String carNumber,
-                          CarType carType,
+                          String vehicleNumber,
+                          DeliveryType deliveryType,
                           LocalDateTime deletedAt,
                           CommonDateTime commonDateTime,
                           String id,
@@ -61,8 +63,8 @@ public class DeliveryDriver {
         this.driverId = driverId;
         this.userYn = userYn;
         this.phoneNumber = phoneNumber;
-        this.carNumber = carNumber;
-        this.carType = carType;
+        this.vehicleNumber = vehicleNumber;
+        this.deliveryType = deliveryType;
         this.deletedAt = deletedAt;
         this.commonDateTime = commonDateTime;
         this.id = id;
