@@ -4,28 +4,19 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.healthplus.vendor.dto.ProductInfoDTO;
-import org.healthplus.vendor.dto.ProductOptionGroupInfoDTO;
+import org.healthplus.vendor.dto.ProductInfoRegistrationDTO;
+import org.healthplus.vendor.enums.Category;
 import org.healthplus.vendor.enums.IsYn;
 import org.healthplus.vendor.enums.MenuType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @ToString
 @Entity
 @Table(name = "menu")
 @NoArgsConstructor
-@Builder
 public class Menu {
 
   @Id
@@ -63,14 +54,30 @@ public class Menu {
   @Column(name = "price")
   private Integer price;
 
-  @Column(name = "stock")
-  private Integer stock;
-
   @Column(name = "calorie")
   private Integer calorie;
 
   @Column(name = "description")
   private String description;
 
+  @Builder
+  public Menu(Long restaurantId,
+              Long categoryId,
+              String name,
+              Integer price,
+              Integer calorie,
+              String description,
+              MenuType menuType) {
+    this.restaurantId = restaurantId;
+    this.categoryId = categoryId;
+    this.createdAt = LocalDateTime.now();
+    this.name = name;
+    this.price = price;
+    this.calorie = calorie;
+    this.description = description;
+    this.menuType = menuType;
+    this.soldYn = IsYn.Y;
+    this.useYn = IsYn.Y;
+  }
 
 }

@@ -4,13 +4,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.healthplus.vendor.entity.Menu;
+import org.healthplus.vendor.enums.Category;
 import org.healthplus.vendor.enums.MenuType;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
-@Builder
 public class ProductInfoRegistrationDTO {
 
   private Long categoryId;
@@ -20,6 +20,38 @@ public class ProductInfoRegistrationDTO {
   private Integer calorie;
   private String categoryType;
   private MenuType menuType;
-  private List<ProductOptionGroupInfoDTO> optionGroup;
+  private ProductOptionGroupInfoDTO optionGroup;
+
+  @Builder
+  public ProductInfoRegistrationDTO(Long categoryId,
+                                    String name,
+                                    Integer price,
+                                    String description,
+                                    Integer calorie,
+                                    String categoryType,
+                                    MenuType menuType,
+                                    ProductOptionGroupInfoDTO optionGroup) {
+    this.categoryId = categoryId;
+    this.name = name;
+    this.price = price;
+    this.description = description;
+    this.calorie = calorie;
+    this.categoryType = categoryType;
+    this.menuType = menuType;
+    this.optionGroup = optionGroup;
+  }
+
+  public Menu toMenuEntity(Long restaurantId) {
+    return Menu.builder()
+            .restaurantId(restaurantId)
+            .categoryId(categoryId)
+            .name(name)
+            .price(price)
+            .calorie(calorie)
+            .description(description)
+            .menuType(menuType)
+            .build();
+
+  }
 
 }

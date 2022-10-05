@@ -7,14 +7,8 @@ import lombok.ToString;
 import org.healthplus.vendor.enums.IsYn;
 import org.springframework.lang.Nullable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @ToString
@@ -59,6 +53,12 @@ public class Restaurant {
   @Enumerated(EnumType.STRING)
   @Column(name = "use_yn")
   private IsYn useYn;
+
+  @Column(name = "create_dt")
+  private LocalDateTime createdAt;
+
+  @Column(name = "modify_dt")
+  private LocalDateTime modifiedAt;
 
   @Column(name = "city")
   private String city;
