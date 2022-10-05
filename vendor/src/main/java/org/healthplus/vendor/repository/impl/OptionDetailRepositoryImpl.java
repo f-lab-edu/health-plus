@@ -14,6 +14,7 @@ import static org.healthplus.vendor.entity.QOptionDetail.optionDetail;
 import static org.healthplus.vendor.entity.QOptionGroup.optionGroup;
 
 
+
 @Repository
 @RequiredArgsConstructor
 public class OptionDetailRepositoryImpl implements OptionDetailRepositoryCustom {
