@@ -5,7 +5,7 @@ plugins {
 }
 
 // subprojects 안에선 plugins block
-subprojects{
+subprojects {
     group 'org.healthplus'
     version '0.1.0-SNAPSHOT'
 

@@ -7,5 +7,5 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DeliveryWorkerException extends RuntimeException {
 
-    private final ErrorCode errorCode;
+  private final ErrorCode errorCode;
 }
