@@ -21,20 +21,21 @@ subprojects{
 
     // 하위 모듈에서 공통으로 사용될 dependencies
     dependencies {
-        testImplementation 'org.junit.jupiter:junit-jupiter-engine'
-        testImplementation 'org.junit.jupiter:junit-jupiter-api'
-
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-        runtimeOnly 'mysql:mysql-connector-java'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jpa"
+        annotationProcessor 'org.projectlombok:lombok'
 
         compileOnly 'org.projectlombok:lombok'
-        annotationProcessor 'org.projectlombok:lombok'
 
         implementation "com.querydsl:querydsl-jpa:5.0.0"
         implementation "com.querydsl:querydsl-core:5.0.0"
-        annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jpa"
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+        runtimeOnly 'mysql:mysql-connector-java'
+
+        testImplementation 'org.junit.jupiter:junit-jupiter-engine'
+        testImplementation 'org.junit.jupiter:junit-jupiter-api'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
     }
 
     test {
