@@ -8,4 +8,5 @@ import lombok.RequiredArgsConstructor;
 public class DeliveryWorkerException extends RuntimeException {
 
   private final ErrorCode errorCode;
+
 }

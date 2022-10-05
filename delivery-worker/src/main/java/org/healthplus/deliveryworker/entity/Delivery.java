@@ -1,9 +1,10 @@
 package org.healthplus.deliveryworker.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 import org.springframework.lang.Nullable;
+import org.healthplus.model.entity.Address;
+
 
 @Entity
 @Table(name = "delivery")

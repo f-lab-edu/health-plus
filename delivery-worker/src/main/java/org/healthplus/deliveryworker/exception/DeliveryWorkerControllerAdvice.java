@@ -16,4 +16,5 @@ public class DeliveryWorkerControllerAdvice {
         e.getErrorCode().getHttpStatus(), e.getErrorCode().getMessage());
     return ErrorResponse.toResponseEntity(e.getErrorCode());
   }
+
 }
