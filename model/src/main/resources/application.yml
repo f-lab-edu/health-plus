@@ -1,2 +1,11 @@
 server:
   port: 8081
+
+spring:
+  datasource:
+    flyway:
+      flyway:
+        enabled: true
+        baseline-on-migrate: true
+        url: jdbc:mysql://localhost:3306/flyway?serverTimezone=UTC&characterEncoding=UTF-8
+        locations: classpath:/db/migration
