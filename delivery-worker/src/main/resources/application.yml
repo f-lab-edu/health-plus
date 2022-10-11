@@ -7,6 +7,15 @@ spring:
     username: root
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+  flyway:
+    enabled: true # flyway 사용여부
+    baseline-on-migrate: true # baseline 설정
+    baseline-version: 1 # baseline-version을 몇부터 실행할지 설정
+    url: jdbc:mysql://localhost:3306/health-plus
+    user: root
+    password: 1234
+
   jpa:
     database: mysql
     properties:
@@ -18,5 +27,3 @@ spring:
       ddl-auto: none
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-  flyway:
-    enabled: true

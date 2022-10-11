@@ -79,7 +79,6 @@ public class DeliveryDriver {
       String email,
       String name,
       String location) {
-
     this.driverId = driverId;
     this.userYn = userYn;
     this.phoneNumber = phoneNumber;
