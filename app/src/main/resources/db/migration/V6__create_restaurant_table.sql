@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `restaurant`
+DROP TABLE IF EXISTS `restaurant`;
 CREATE TABLE `restaurant`
 (
     `restaurant_id`   bigint      NOT NULL AUTO_INCREMENT COMMENT '식당 PK',

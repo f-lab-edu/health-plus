@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `billing_history`
+DROP TABLE IF EXISTS `billing_history`;
 CREATE TABLE `billing_history`
 (
     `billing_id`    bigint   NOT NULL AUTO_INCREMENT COMMENT '이용내역 PK',

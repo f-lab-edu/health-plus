@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `alarm`
+DROP TABLE IF EXISTS `alarm`;
 CREATE TABLE `alarm`
 (
     `alarm_id`    bigint NOT NULL AUTO_INCREMENT COMMENT '알람 PK',

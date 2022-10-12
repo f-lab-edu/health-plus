@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `customer`
+DROP TABLE IF EXISTS `customer`;
 CREATE TABLE `customer`
 (
     `customer_id`  bigint       NOT NULL AUTO_INCREMENT COMMENT '구매회원 PK',

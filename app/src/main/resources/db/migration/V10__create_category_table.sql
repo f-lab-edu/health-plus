@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `category`
+DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category`
 (
     `category_id` bigint      NOT NULL AUTO_INCREMENT COMMENT '카테고리 PK',

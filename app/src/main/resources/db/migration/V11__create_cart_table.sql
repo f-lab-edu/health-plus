@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `cart`
+DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart`
 (
     `cart_id`     bigint   NOT NULL AUTO_INCREMENT COMMENT '장바구니 PK',

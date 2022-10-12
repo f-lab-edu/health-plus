@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `delivery`
+DROP TABLE IF EXISTS `delivery`;
 CREATE TABLE `delivery`
 (
     `delivery_id` bigint      NOT NULL AUTO_INCREMENT COMMENT '배달 PK',

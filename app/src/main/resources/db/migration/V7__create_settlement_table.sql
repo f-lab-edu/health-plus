@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `settlement`
+DROP TABLE IF EXISTS `settlement`;
 CREATE TABLE `settlement`
 (
     `settlement_id` bigint   NOT NULL AUTO_INCREMENT COMMENT '정산내역 PK',
