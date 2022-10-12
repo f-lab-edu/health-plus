@@ -1,8 +1,3 @@
--- `health-plus`.delivery_driver definition
-CREATE
-DATABASE IF NOT EXISTS `health-plus`
-USE `health-plus`;
-
 DROP TABLE IF EXISTS `delivery_driver`;
 CREATE TABLE `delivery_driver`
 (
