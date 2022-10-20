@@ -1,6 +1,7 @@
 package org.healthplus.deliveryworker.service.command;
 
 import java.time.LocalDateTime;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -38,17 +39,17 @@ public class DeliveryInfoCommand {
   }
 
   public DeliveryDriver toEntity() {
-    return new DeliveryDriver(
-        userYn,
-        phoneNumber,
-        vehicleNumber,
-        deliveryType,
-        LocalDateTime.now(),
-        id,
-        password,
-        email,
-        name,
-        location
-        );
+    return DeliveryDriver.builder()
+        .id(id)
+        .name(name)
+        .password(password)
+        .email(email)
+        .location(location)
+        .phoneNumber(phoneNumber)
+        .vehicleNumber(vehicleNumber)
+        .deliveryType(deliveryType)
+        .createdAt(LocalDateTime.now())
+        .userYn(userYn)
+        .build();
   }
 }

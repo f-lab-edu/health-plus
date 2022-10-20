@@ -1,6 +1,5 @@
 package org.healthplus.deliveryworker.presentation.requestDto;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.healthplus.deliveryworker.enums.DeliveryType;
@@ -9,8 +8,7 @@ import org.healthplus.deliveryworker.service.command.DeliveryInfoCommand;
 
 @Getter
 @NoArgsConstructor
-@Builder
-public class DeliveryInfoDto {
+public class DeliveryDriverRegistrationDTO {
 
   private String id;
   private String password;
@@ -22,19 +20,6 @@ public class DeliveryInfoDto {
   private String name;
   private IsYn userYn;
 
-  public DeliveryInfoDto(String id, String password, String email, String location,
-      DeliveryType deliveryType, String vehicleNumber, String phoneNumber, String name,
-      IsYn userYn) {
-    this.id = id;
-    this.password = password;
-    this.email = email;
-    this.location = location;
-    this.deliveryType = deliveryType;
-    this.vehicleNumber = vehicleNumber;
-    this.phoneNumber = phoneNumber;
-    this.name = name;
-    this.userYn = userYn;
-  }
 
   public DeliveryInfoCommand toCommand() {
     return new DeliveryInfoCommand(id, password, email, location, deliveryType, vehicleNumber,

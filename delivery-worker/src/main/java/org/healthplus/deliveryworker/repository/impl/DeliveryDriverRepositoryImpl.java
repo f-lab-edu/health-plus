@@ -18,7 +18,6 @@ public class DeliveryDriverRepositoryImpl implements DeliveryDriverRepository {
   private final JpaDeliveryDriverRepository driverRepository;
   @Override
   public DeliveryDriver save(DeliveryDriver deliveryDriver) {
-    log.info("deliveryDriver = {}", deliveryDriver);
     return driverRepository.save(deliveryDriver);
   }
 
