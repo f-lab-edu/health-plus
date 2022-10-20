@@ -8,6 +8,7 @@ import org.healthplus.deliveryworker.presentation.responseDto.DeliveryDriverProf
 import org.healthplus.deliveryworker.presentation.responseDto.DeliveryDriverRegistrationResultDTO;
 import org.healthplus.deliveryworker.service.DeliveryDriverService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,8 @@ public class DeliveryDriverController {
   private final DeliveryDriverService deliveryDriverService;
 
   @PostMapping
-  public ResponseEntity<DeliveryDriverRegistrationResultDTO> addDeliveryDriver(@RequestBody DeliveryDriverRegistrationDTO dto) {
+  public ResponseEntity<DeliveryDriverRegistrationResultDTO> addDeliveryDriver(
+      @RequestBody DeliveryDriverRegistrationDTO dto) {
     return ResponseEntity.ok(deliveryDriverService.registerDriver(dto.toCommand()));
   }
 
@@ -33,7 +35,7 @@ public class DeliveryDriverController {
     return ResponseEntity.ok(deliveryDriverService.getDriverProfile(driverId));
   }
 
-  @PostMapping("/{driverId}")
+  @DeleteMapping("/{driverId}")
   public ResponseEntity<Result> removeDriverInfo(@PathVariable Long driverId) {
     return ResponseEntity.ok(deliveryDriverService.removeDriver(driverId));
   }

@@ -1,7 +1,6 @@
 package org.healthplus.deliveryworker.service.command;
 
 import java.time.LocalDateTime;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -39,7 +38,7 @@ public class DeliveryInfoCommand {
   }
 
   public DeliveryDriver toEntity() {
-    return DeliveryDriver.builder()
+    return DeliveryDriver.registrationBuilder()
         .id(id)
         .name(name)
         .password(password)
