@@ -8,4 +8,6 @@ public interface DeliveryDriverRepository {
   DeliveryDriver save(DeliveryDriver deliveryDriver);
 
   DeliveryDriver findDriver(Long driverId);
+
+  void deleteById(Long driverId);
 }

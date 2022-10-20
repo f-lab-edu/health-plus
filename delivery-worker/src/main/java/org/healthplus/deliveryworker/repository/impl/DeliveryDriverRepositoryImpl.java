@@ -5,6 +5,7 @@ import static org.healthplus.deliveryworker.exception.ErrorCode.INVALID_DELIVERY
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.healthplus.deliveryworker.entity.DeliveryDriver;
+import org.healthplus.deliveryworker.enums.Result;
 import org.healthplus.deliveryworker.exception.DeliveryWorkerException;
 import org.healthplus.deliveryworker.repository.DeliveryDriverRepository;
 import org.healthplus.deliveryworker.repository.JpaDeliveryDriverRepository;
@@ -24,5 +25,10 @@ public class DeliveryDriverRepositoryImpl implements DeliveryDriverRepository {
   @Override
   public DeliveryDriver findDriver(Long driverId) {
     return driverRepository.findById(driverId).orElseThrow(() -> new DeliveryWorkerException(INVALID_DELIVERY_WORKER));
+  }
+
+  @Override
+  public void deleteById(Long driverId) {
+    driverRepository.deleteById(driverId);
   }
 }
