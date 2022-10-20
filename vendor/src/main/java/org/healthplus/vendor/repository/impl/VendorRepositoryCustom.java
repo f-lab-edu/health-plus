@@ -9,4 +9,7 @@ import java.util.List;
 
 public interface VendorRepositoryCustom {
 
+  RestaurantInfoInquiryDTO findRestaurantInfo(Long vendorId);
+
+
 }

@@ -10,6 +10,8 @@ public interface OptionDetailRepositoryCustom {
 
   long modifyOptionDetailInfo(List<ProductOptionDetailInfoDTO> optionInfo);
 
+  List<ProductOptionDetailInfoDTO> findProductOptionInfo(Long productId);
+
   List<Long> findIdList(List<Long> optionGroupIdList);
 
   List<OptionDetail> findDetailList(List<Long> menuIdList);
