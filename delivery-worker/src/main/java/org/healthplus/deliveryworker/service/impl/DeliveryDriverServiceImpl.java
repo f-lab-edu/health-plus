@@ -2,6 +2,7 @@ package org.healthplus.deliveryworker.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.healthplus.deliveryworker.presentation.responseDto.DeliveryDriverProfileDTO;
 import org.healthplus.deliveryworker.repository.DeliveryDriverRepository;
 import org.healthplus.deliveryworker.service.DeliveryDriverService;
 import org.healthplus.deliveryworker.service.command.DeliveryInfoCommand;
@@ -18,5 +19,11 @@ public class DeliveryDriverServiceImpl implements DeliveryDriverService {
   public void driverSignUp(DeliveryInfoCommand deliveryInfoCommand) {
     log.info("deliveryDriverService = {}", deliveryInfoCommand.toString());
     deliveryDriverRepository.save(deliveryInfoCommand.toEntity());
+  }
+
+  @Override
+  public DeliveryDriverProfileDTO getDriverProfile(Long driverId) {
+    log.info("driverService driver Info = {}", driverId);
+    return DeliveryDriverProfileDTO.setProfile(deliveryDriverRepository.findDriver(driverId));
   }
 }

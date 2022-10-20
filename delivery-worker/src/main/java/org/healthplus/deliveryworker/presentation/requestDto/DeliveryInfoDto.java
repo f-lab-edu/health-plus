@@ -1,19 +1,15 @@
 package org.healthplus.deliveryworker.presentation.requestDto;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import org.healthplus.deliveryworker.enums.DeliveryType;
 import org.healthplus.deliveryworker.enums.IsYn;
-import org.healthplus.deliveryworker.service.DeliveryDriverService;
 import org.healthplus.deliveryworker.service.command.DeliveryInfoCommand;
 
 @Getter
 @NoArgsConstructor
 @Builder
-@ToString
 public class DeliveryInfoDto {
 
   private String id;
