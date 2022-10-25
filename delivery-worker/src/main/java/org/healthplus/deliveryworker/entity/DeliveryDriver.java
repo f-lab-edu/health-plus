@@ -18,6 +18,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
+/*
+ * 배달 노동자 Entity
+ * */
 @Entity
 @Table(name = "delivery_driver")
 @Getter
