@@ -11,7 +11,6 @@ import java.util.List;
 
 @Getter
 @ToString
-@Builder
 public class ProductInfoDTO {
 
   private Long menuId;
@@ -23,5 +22,26 @@ public class ProductInfoDTO {
   private Integer price;
   private List<ProductOptionGroupInfoDTO> optionGroup;
 
+  public ProductInfoDTO(List<ProductOptionGroupInfoDTO> optionGroup) {
+    this.optionGroup = optionGroup;
+  }
 
+  @Builder
+  public ProductInfoDTO(Long menuId,
+                        String name,
+                        String description,
+                        Integer calorie,
+                        IsYn soldYn,
+                        IsYn useYn,
+                        Integer price,
+                        List<ProductOptionGroupInfoDTO> optionGroup) {
+    this.menuId = menuId;
+    this.name = name;
+    this.description = description;
+    this.calorie = calorie;
+    this.soldYn = soldYn;
+    this.useYn = useYn;
+    this.price = price;
+    this.optionGroup = optionGroup;
+  }
 }
