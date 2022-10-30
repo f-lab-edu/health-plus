@@ -2,6 +2,7 @@ package org.healthplus.presentation;
 
 import lombok.RequiredArgsConstructor;
 import org.healthplus.application.UserService;
+import org.healthplus.presentation.request.UserLoginRequest;
 import org.healthplus.presentation.request.UserRegisterRequest;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,9 +13,10 @@ public class UserAuthentication implements UserAuthenticationSpecification {
   private final UserService userService;
 
   @Override
-  public void register(UserRegisterRequest request) {
-    userService.signUp(request.getId(), request.getName(), request.getEmail(),
-        request.getPassword(), request.getPhoneNumber());
+  public void register(UserRegisterRequest registerRequest) {
+    userService.signUp(registerRequest.getId(), registerRequest.getName(),
+        registerRequest.getEmail(),
+        registerRequest.getPassword(), registerRequest.getPhoneNumber());
   }
 
   @Override
@@ -23,8 +25,8 @@ public class UserAuthentication implements UserAuthenticationSpecification {
   }
 
   @Override
-  public void login() {
-
+  public void login(UserLoginRequest loginRequest) {
+    userService.login(loginRequest.getId(), loginRequest.getPassword());
   }
 
   @Override

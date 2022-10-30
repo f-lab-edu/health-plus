@@ -6,4 +6,6 @@ package org.healthplus.domain;
 public interface PasswordEncryption {
 
   String encryptor(String password);
+
+  boolean matchPassword(String encryptedPassword, String plainText);
 }
