@@ -21,13 +21,16 @@ public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id")
-  private Long id;
+  @Column(name = "user_id")
+  private Long userId;
+
+  @Column(name = "id", nullable = false)
+  private String id;
 
   @Column(name = "name", nullable = false)
   private String name;
 
-  @Column(name = "email")
+  @Column(name = "email", nullable = false)
   private String email; // Email
 
   @Column(name = "password", nullable = false)
@@ -41,6 +44,9 @@ public class User {
 
   @Column(name = "modify_dt")
   private LocalDateTime modifiedAt;
+
+  @Column(name = "delete_dt")
+  private LocalDateTime deletedAt;
 
   @ElementCollection(fetch = FetchType.EAGER)
   @Column(name = "roles")
