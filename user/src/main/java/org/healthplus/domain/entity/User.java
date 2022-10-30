@@ -16,9 +16,6 @@ import org.healthplus.model.role.Role;
 @Table(name = "user")
 public class User {
 
-  protected User() {
-  }
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "user_id")
@@ -52,7 +49,21 @@ public class User {
   @Column(name = "roles")
   private Set<Role> roles;
 
-/*
+  public User(String id, String name, String email, String password, String phoneNumber,
+      LocalDateTime createdAt) {
+    this.id = id;
+    this.name = name;
+    this.email = email;
+    this.password = password;
+    this.phoneNumber = phoneNumber;
+    this.createdAt = createdAt;
+  }
+
+  public User() {
+
+  }
+
+  /*
   public void updateRoles() {
     this.roles.add(asd);
     this.validateRoles();

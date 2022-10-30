@@ -1,7 +1,9 @@
 package org.healthplus.presentation;
 
+import org.healthplus.presentation.request.UserRegisterRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 public interface UserAuthenticationSpecification {
 
@@ -9,7 +11,7 @@ public interface UserAuthenticationSpecification {
    * 회원 가입
    * */
   @PostMapping("/api/auth/user/register")
-  void register();
+  void register(@RequestBody UserRegisterRequest request);
 
   /*
    * 회원 가입 확인
