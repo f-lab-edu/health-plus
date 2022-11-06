@@ -2,12 +2,12 @@ package org.healthplus.user.application;
 
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
-import org.healthplus.domain.PasswordEncryption;
-import org.healthplus.domain.UserRepository;
-import org.healthplus.domain.entity.User;
-import org.healthplus.domain.exception.PasswordMismatchException;
-import org.healthplus.domain.exception.UserExistException;
-import org.healthplus.domain.exception.UserNotFoundException;
+import org.healthplus.user.domain.PasswordEncryption;
+import org.healthplus.user.domain.UserRepository;
+import org.healthplus.user.domain.entity.User;
+import org.healthplus.user.domain.exception.PasswordMismatchException;
+import org.healthplus.user.domain.exception.UserExistException;
+import org.healthplus.user.domain.exception.UserNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
