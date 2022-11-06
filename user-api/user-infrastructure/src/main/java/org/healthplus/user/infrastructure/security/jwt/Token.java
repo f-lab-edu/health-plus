@@ -10,7 +10,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-import org.healthplus.user.domain.dto.JwtPayloadDto;
+import org.healthplus.user.domain.dto.TokenPayloadDto;
 import org.healthplus.user.infrastructure.exception.JwtException;
 import org.healthplus.user.infrastructure.security.jwt.util.StringToBase64CodeUtil;
 import org.healthplus.user.infrastructure.security.jwt.wrapper.Payload;
@@ -24,7 +24,7 @@ public class Token {
   private final String ServerSecreteKey = "HealthPlusProjectTokenKey";
   private ObjectMapper objectMapper = new ObjectMapper();
 
-  private Token(String algo, String type, JwtPayloadDto payloadString) {
+  private Token(String algo, String type, TokenPayloadDto payloadString) {
     this.header = TokenHeader.of(algo, type);
     this.payload = Payload.from(payloadString);
   }
@@ -32,7 +32,7 @@ public class Token {
   /*
   * 기존 Setting은 "HS256", "JWT" 입니다.
   * */
-  public static Token of(JwtPayloadDto payloadString) {
+  public static Token of(TokenPayloadDto payloadString) {
     return new Token("HS256", "JWT", payloadString);
   }
 

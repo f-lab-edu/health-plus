@@ -1,20 +1,20 @@
 package org.healthplus.user.infrastructure.security.jwt.wrapper;
 
-import org.healthplus.user.domain.dto.JwtPayloadDto;
+import org.healthplus.user.domain.dto.TokenPayloadDto;
 
 public class Payload {
 
-  private JwtPayloadDto payloadDto;
+  private TokenPayloadDto payloadDto;
 
-  private Payload(JwtPayloadDto payloadDto) {
+  private Payload(TokenPayloadDto payloadDto) {
     this.payloadDto = payloadDto;
   }
 
-  public static Payload from(JwtPayloadDto payloadDto) {
+  public static Payload from(TokenPayloadDto payloadDto) {
     return new Payload(payloadDto);
   }
 
-  public JwtPayloadDto currentPayload() {
+  public TokenPayloadDto currentPayload() {
     return payloadDto;
   }
 

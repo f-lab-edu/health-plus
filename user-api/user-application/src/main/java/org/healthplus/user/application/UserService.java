@@ -2,7 +2,7 @@ package org.healthplus.user.application;
 
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
-import org.healthplus.user.domain.dto.JwtPayloadDto;
+import org.healthplus.user.domain.dto.TokenPayloadDto;
 import org.healthplus.user.domain.PasswordEncryption;
 import org.healthplus.user.domain.TokenGenerator;
 import org.healthplus.user.domain.UserRepository;
@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UserService {
 
-  private final TokenGenerator jwtGenerator;
+  private final TokenGenerator tokenGenerator;
   private final UserRepository userRepository;
   private final PasswordEncryption passwordManager;
 
@@ -46,7 +46,8 @@ public class UserService {
     }
 
     // TODO: 2022/10/30 인증 인가
-    JwtPayloadDto jwtPayloadDto = new JwtPayloadDto(user.getId(), user.getName(), user.getEmail());
+    String token = tokenGenerator.generate(
+        new TokenPayloadDto(user.getId(), user.getName(), user.getEmail()));
 
   }
 }

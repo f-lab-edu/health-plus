@@ -1,9 +1,9 @@
 package org.healthplus.user.domain;
 
-import org.healthplus.user.domain.dto.JwtPayloadDto;
+import org.healthplus.user.domain.dto.TokenPayloadDto;
 
 public interface TokenGenerator {
 
-    String generate(JwtPayloadDto jwtPayloadDto);
+    String generate(TokenPayloadDto jwtPayloadDto);
 
 }
