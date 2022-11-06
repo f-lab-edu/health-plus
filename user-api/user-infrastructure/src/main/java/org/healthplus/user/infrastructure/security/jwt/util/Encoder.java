@@ -3,7 +3,7 @@ package org.healthplus.user.infrastructure.security.jwt.util;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
-public class StringToBase64CodeUtil {
+public class Encoder {
 
   /*
   * JSON type to Base64String

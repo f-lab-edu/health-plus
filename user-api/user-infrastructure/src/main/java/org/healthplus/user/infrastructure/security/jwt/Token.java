@@ -12,7 +12,7 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import org.healthplus.user.domain.dto.TokenPayloadDto;
 import org.healthplus.user.infrastructure.exception.JwtException;
-import org.healthplus.user.infrastructure.security.jwt.util.StringToBase64CodeUtil;
+import org.healthplus.user.infrastructure.security.jwt.util.Encoder;
 import org.healthplus.user.infrastructure.security.jwt.wrapper.Payload;
 import org.healthplus.user.infrastructure.security.jwt.wrapper.TokenHeader;
 
@@ -24,16 +24,16 @@ public class Token {
   private final String ServerSecreteKey = "HealthPlusProjectTokenKey";
   private ObjectMapper objectMapper = new ObjectMapper();
 
-  private Token(String algo, String type, TokenPayloadDto payloadString) {
+  private Token(String algo, String type, TokenPayloadDto payloadDto) {
     this.header = TokenHeader.of(algo, type);
-    this.payload = Payload.from(payloadString);
+    this.payload = Payload.from(payloadDto);
   }
 
   /*
    * 기존 Setting은 "HS256", "JWT" 입니다.
    * */
-  public static Token of(TokenPayloadDto payloadString) {
-    return new Token("HS256", "JWT", payloadString);
+  public static Token of(TokenPayloadDto payloadDto) {
+    return new Token("HS256", "JWT", payloadDto);
   }
 
   public String generate() {
@@ -46,8 +46,8 @@ public class Token {
       throw new RuntimeException(e);
     }
     // TODO: 2022/11/06 알고리즘에 따른 시그니처 암호화 선택해야함
-    String generateHeaderJson = StringToBase64CodeUtil.generate(headerJson);
-    String generatePayloadJson = StringToBase64CodeUtil.generate(payloadJson);
+    String generateHeaderJson = Encoder.generate(headerJson);
+    String generatePayloadJson = Encoder.generate(payloadJson);
     String tempString = generateHeaderJson + "." + generatePayloadJson;
 
     return makingSignature(tempString, ServerSecreteKey);
@@ -63,7 +63,7 @@ public class Token {
       byte[] signedBytes = hmacSHA256.doFinal(
           headerAndPayloadJsonString.getBytes(StandardCharsets.UTF_8));
 
-      return StringToBase64CodeUtil.generate(String.valueOf(signedBytes));
+      return Encoder.generate(String.valueOf(signedBytes));
     } catch (NoSuchAlgorithmException | InvalidKeyException e) {
       throw new JwtException(Encode_Exception);
     }
