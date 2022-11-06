@@ -1,9 +1,9 @@
-package org.healthplus.presentation;
+package org.healthplus.user.presentation;
 
 import lombok.RequiredArgsConstructor;
-import org.healthplus.application.UserService;
-import org.healthplus.presentation.request.UserLoginRequest;
-import org.healthplus.presentation.request.UserRegisterRequest;
+import org.healthplus.user.application.UserService;
+import org.healthplus.user.presentation.request.UserLoginRequest;
+import org.healthplus.user.presentation.request.UserRegisterRequest;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

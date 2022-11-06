@@ -1,7 +1,7 @@
-package org.healthplus.presentation;
+package org.healthplus.user.presentation;
 
-import org.healthplus.presentation.request.UserLoginRequest;
-import org.healthplus.presentation.request.UserRegisterRequest;
+import org.healthplus.user.presentation.request.UserLoginRequest;
+import org.healthplus.user.presentation.request.UserRegisterRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

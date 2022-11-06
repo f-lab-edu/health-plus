@@ -1,4 +1,4 @@
-package org.healthplus.presentation.request;
+package org.healthplus.user.presentation.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
