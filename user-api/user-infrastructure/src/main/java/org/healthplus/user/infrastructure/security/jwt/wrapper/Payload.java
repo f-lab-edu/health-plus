@@ -1,20 +1,17 @@
 package org.healthplus.user.infrastructure.security.jwt.wrapper;
 
-import org.healthplus.user.infrastructure.security.jwt.util.StringToBase64CodeUtil;
+import org.healthplus.user.domain.dto.JwtPayloadDto;
 
 public class Payload {
 
-  private String payloadString;
+  private JwtPayloadDto payloadDto;
 
-  private Payload(String payloadString) {
-    this.payloadString = StringToBase64CodeUtil.generate(payloadString);
+  private Payload(JwtPayloadDto payloadDto) {
+    this.payloadDto = payloadDto;
   }
 
-  public static Payload from(String payload) {
-    return new Payload(payload);
+  public static Payload from(JwtPayloadDto payloadDto) {
+    return new Payload(payloadDto);
   }
 
-  public String currentPayloadBase64Code() {
-    return payloadString;
-  }
 }
