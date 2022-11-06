@@ -15,3 +15,6 @@ include 'vendor'
 include 'customer'
 include 'model'
 include 'user-api'
+include 'user-api:user-application'
+findProject(':user-api:user-application')?.name = 'user-application'
+
