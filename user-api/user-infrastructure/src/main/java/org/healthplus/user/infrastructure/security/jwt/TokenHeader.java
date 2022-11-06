@@ -1,7 +1,7 @@
 package org.healthplus.user.infrastructure.security.jwt;
 
-import org.healthplus.user.infrastructure.security.jwt.types.HeaderType;
-import org.healthplus.user.infrastructure.security.jwt.types.SignatureAlgorithm;
+import org.healthplus.user.infrastructure.security.jwt.wrapper.HeaderType;
+import org.healthplus.user.infrastructure.security.jwt.wrapper.SignatureAlgorithm;
 
 public class TokenHeader {
 
