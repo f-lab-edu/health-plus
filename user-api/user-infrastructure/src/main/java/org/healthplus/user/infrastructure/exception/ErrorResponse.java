@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 public class ErrorResponse {
 
   private final LocalDateTime timeStamp;
-  private final int status; // httpStatus Number
+  private final int status;
   private final String message;
 
   public static ResponseEntity<ErrorResponse> toResponseEntity(ErrorCode errorCode) {
