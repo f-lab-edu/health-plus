@@ -1,21 +1,20 @@
 package org.healthplus.user.infrastructure.security.jwt.wrapper;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
+import org.healthplus.user.infrastructure.security.jwt.util.StringToBase64CodeUtil;
 
 public class Payload {
 
   private String payloadString;
 
   private Payload(String payloadString) {
-    this.payloadString = stringToBase64Encoder(payloadString);
+    this.payloadString = StringToBase64CodeUtil.generate(payloadString);
   }
 
   public static Payload from(String payload) {
     return new Payload(payload);
   }
 
-  private String stringToBase64Encoder(String payloadString) {
-    return Base64.getEncoder().encodeToString(payloadString.getBytes(StandardCharsets.UTF_8));
+  public String currentPayloadBase64Code() {
+    return payloadString;
   }
 }
