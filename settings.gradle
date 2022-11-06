@@ -14,7 +14,11 @@ include 'delivery-worker'
 include 'vendor'
 include 'customer'
 include 'model'
-include 'user-api'
-include 'user-api:user-application'
-findProject(':user-api:user-application')?.name = 'user-application'
 
+include(
+        'user-api',
+        'user-api:user-presentation',
+        'user-api:user-application',
+        'user-api:user-domain',
+        'user-api:user-infrastructure',
+)
