@@ -14,4 +14,8 @@ public class Payload {
     return new Payload(payloadDto);
   }
 
+  public JwtPayloadDto currentPayload() {
+    return payloadDto;
+  }
+
 }

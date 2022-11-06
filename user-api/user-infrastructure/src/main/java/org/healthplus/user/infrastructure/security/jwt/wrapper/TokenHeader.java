@@ -25,6 +25,14 @@ public class TokenHeader {
     return new TokenHeader(algo, type);
   }
 
+  public SignatureAlgorithm currentAlgo() {
+    return algo;
+  }
+
+  public TokenHeader currentTokenHeader() {
+    return this;
+  }
+
   private void isJwtTokenType(String type) {
     for (HeaderType header : HeaderType.values()) {
       if (header.name() != type) {
