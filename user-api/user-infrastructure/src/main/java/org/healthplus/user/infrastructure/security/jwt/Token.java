@@ -30,8 +30,8 @@ public class Token {
   }
 
   /*
-  * 기존 Setting은 "HS256", "JWT" 입니다.
-  * */
+   * 기존 Setting은 "HS256", "JWT" 입니다.
+   * */
   public static Token of(TokenPayloadDto payloadString) {
     return new Token("HS256", "JWT", payloadString);
   }
