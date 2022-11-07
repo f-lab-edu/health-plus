@@ -10,8 +10,7 @@ class TokenTest {
     TokenPayloadDto payloadDto = TokenPayloadDto.builder()
         .id("yeon")
         .name("lee")
-        .email("@gamil.com")
-        .expired(null).build();
+        .email("@gamil.com").build();
 
     Token token = Token.of(payloadDto);
     String generate = token.generate();

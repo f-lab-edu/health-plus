@@ -14,16 +14,16 @@ import org.healthplus.user.infrastructure.security.jwt.enums.SignatureAlgorithm;
 @Getter
 public class TokenHeader {
 
-  private SignatureAlgorithm algo;
-  private HeaderType type;
+  private SignatureAlgorithm alg;
+  private HeaderType typ;
 
   private TokenHeader(String algo, String type) {
 
     isTokenAlgo(algo);
     isTokenType(type);
 
-    this.algo = SignatureAlgorithm.valueOf(algo);
-    this.type = HeaderType.valueOf(type);
+    this.alg = SignatureAlgorithm.valueOf(algo);
+    this.typ = HeaderType.valueOf(type);
   }
 
   public static TokenHeader of(String algo, String type) {
@@ -31,7 +31,7 @@ public class TokenHeader {
   }
 
   public SignatureAlgorithm currentAlgo() {
-    return algo;
+    return alg;
   }
 
   public TokenHeader currentTokenHeader() {

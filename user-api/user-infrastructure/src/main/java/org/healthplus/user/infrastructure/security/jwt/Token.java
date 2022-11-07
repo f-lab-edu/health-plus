@@ -42,11 +42,14 @@ public class Token {
    * */
   public String generate() {
     try {
+      // header obj to json, payload obj to json
       String headerJson = objectMapper.writeValueAsString(header.currentTokenHeader());
       String payloadJson = objectMapper.writeValueAsString(payload.currentPayload());
 
       // encoding(headerJson) + . + encoding(payloadJson)
       String data = Encoder.generate(headerJson) + "." + Encoder.generate(payloadJson);
+
+      // get signature
       String signature = makingSignature(data);
       return data + "." + signature;
 
@@ -69,17 +72,14 @@ public class Token {
 
   private String makingSignature(String data) {
     try {
-      System.out.println("makingsignature");
       // HS256 algorithm works in here
-      byte[] hash = ServerSecreteKey.getBytes();
-      Mac hmacSHA256 = Mac.getInstance("HmacSHA256");
+      byte[] hash = ServerSecreteKey.getBytes(StandardCharsets.UTF_8);
+      Mac sha256Hmac = Mac.getInstance("HmacSHA256");
       SecretKeySpec secretKey = new SecretKeySpec(hash, "HmacSHA256");
-      hmacSHA256.init(secretKey);
+      sha256Hmac.init(secretKey);
 
-      byte[] signedBytes = hmacSHA256.doFinal(
-          data.getBytes(StandardCharsets.UTF_8));
-
-      return Encoder.generate(String.valueOf(signedBytes));
+      return Encoder.generate(String.valueOf(sha256Hmac.doFinal(
+          data.getBytes(StandardCharsets.UTF_8))));
     } catch (NoSuchAlgorithmException | InvalidKeyException e) {
       throw new JwtException(Encode_Exception);
     }

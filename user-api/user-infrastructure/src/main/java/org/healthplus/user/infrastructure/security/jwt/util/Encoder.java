@@ -9,7 +9,9 @@ public class Encoder {
   * JSON type to Base64String
   * */
   public static String generate(String inputString) {
-    return Base64.getEncoder().encodeToString(inputString.getBytes(StandardCharsets.UTF_8));
+    // return Base64.getEncoder().encodeToString(inputString.getBytes(StandardCharsets.UTF_8));
+    return Base64.getUrlEncoder().withoutPadding()
+        .encodeToString(inputString.getBytes(StandardCharsets.UTF_8));
   }
 
 }
