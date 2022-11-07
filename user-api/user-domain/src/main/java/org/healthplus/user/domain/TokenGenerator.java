@@ -4,6 +4,6 @@ import org.healthplus.user.domain.dto.TokenPayloadDto;
 
 public interface TokenGenerator {
 
-    String generate(TokenPayloadDto jwtPayloadDto);
+    String generate(TokenPayloadDto tokenPayloadDto);
 
 }

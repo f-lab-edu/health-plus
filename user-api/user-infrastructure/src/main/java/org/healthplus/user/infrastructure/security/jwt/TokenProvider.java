@@ -18,14 +18,14 @@ import org.healthplus.user.infrastructure.security.jwt.wrapper.Payload;
 import org.healthplus.user.infrastructure.security.jwt.wrapper.TokenHeader;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class Token {
+public class TokenProvider {
 
   private TokenHeader header;
   private Payload payload;
   private final String ServerSecreteKey = "HealthPlusProjectTokenKey";
   private ObjectMapper objectMapper = new ObjectMapper();
 
-  private Token(String algo, String type, TokenPayloadDto payloadDto) {
+  private TokenProvider(String algo, String type, TokenPayloadDto payloadDto) {
     this.header = TokenHeader.of(algo, type);
     this.payload = Payload.from(payloadDto);
   }
@@ -33,8 +33,8 @@ public class Token {
   /*
    * 기존 Setting은 "HS256", "JWT" 입니다.
    * */
-  public static Token of(TokenPayloadDto payloadDto) {
-    return new Token("HS256", "JWT", payloadDto);
+  public static TokenProvider of(TokenPayloadDto payloadDto) {
+    return new TokenProvider("HS256", "JWT", payloadDto);
   }
 
   /*
@@ -70,6 +70,10 @@ public class Token {
     }
   }
 
+
+  /*
+  * HS256 변환
+  * */
   private String makingSignature(String data) {
     try {
       // HS256 algorithm works in here

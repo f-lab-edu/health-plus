@@ -12,7 +12,7 @@ class TokenTest {
         .name("lee")
         .email("@gamil.com").build();
 
-    Token token = Token.of(payloadDto);
+    TokenProvider token = TokenProvider.of(payloadDto);
     String generate = token.generate();
     System.out.println(generate);
   }
