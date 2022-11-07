@@ -3,7 +3,6 @@ package org.healthplus.user.application;
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import org.healthplus.user.domain.PasswordEncryption;
-import org.healthplus.user.domain.TokenGenerator;
 import org.healthplus.user.domain.UserRepository;
 import org.healthplus.user.domain.entity.User;
 import org.healthplus.user.domain.exception.PasswordMismatchException;
@@ -15,8 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-
-  private final TokenGenerator tokenGenerator;
   private final UserRepository userRepository;
   private final PasswordEncryption passwordManager;
 
