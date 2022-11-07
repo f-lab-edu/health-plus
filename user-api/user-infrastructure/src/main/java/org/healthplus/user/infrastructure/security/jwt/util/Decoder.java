@@ -4,7 +4,12 @@ import java.util.Base64;
 
 public class Decoder {
 
-  public static String generate(String inputString) {
-    return new String(Base64.getDecoder().decode(inputString));
+  /*
+  * header.payload.signature -> string array -> {"header", "payload", "signature"}
+  * */
+  public static String generate(String token) {
+    String[] split = token.split(".");
+    String encodedPayload = split[1];
+    return new String(Base64.getDecoder().decode(encodedPayload));
   }
 }

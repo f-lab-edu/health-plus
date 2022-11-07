@@ -1,14 +1,34 @@
 package org.healthplus.user.domain.entity;
 
-import lombok.RequiredArgsConstructor;
-import org.healthplus.user.domain.TokenGenerator;
+import java.time.LocalDateTime;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import lombok.Getter;
 
-@RequiredArgsConstructor
+@Entity
+@Table(name = "token")
+@Getter
 public class RefreshToken {
 
-  private final TokenGenerator tokenGenerator;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "token_id")
+  private Long tokenId;
 
-  private String refreshToken;
-  private static final int REFRESH_TOKEN_EXPIRED_DAYS = 3;
+  @Column(name = "user_id")
+  private Long userId;
+
+  @Column(name = "refresh_token")
+  private String token;
+
+  /*
+  * Refresh Token 만료 기간을 3달로 설정
+  * */
+  @Column(name = "expired_date")
+  private LocalDateTime expiredDate = LocalDateTime.now().plusMonths(3);
 
 }

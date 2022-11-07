@@ -12,6 +12,7 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import org.healthplus.user.domain.dto.TokenPayloadDto;
 import org.healthplus.user.infrastructure.exception.JwtException;
+import org.healthplus.user.infrastructure.security.jwt.util.Decoder;
 import org.healthplus.user.infrastructure.security.jwt.util.Encoder;
 import org.healthplus.user.infrastructure.security.jwt.wrapper.Payload;
 import org.healthplus.user.infrastructure.security.jwt.wrapper.TokenHeader;
@@ -31,6 +32,7 @@ public class Token {
 
   /*
    * 기존 Setting은 "HS256", "JWT" 입니다.
+   * Encoding method
    * */
   public static Token of(TokenPayloadDto payloadDto) {
     return new Token("HS256", "JWT", payloadDto);
@@ -45,23 +47,36 @@ public class Token {
     } catch (JsonProcessingException e) {
       throw new RuntimeException(e);
     }
-    // TODO: 2022/11/06 알고리즘에 따른 시그니처 암호화 선택해야함
-    String generateHeaderJson = Encoder.generate(headerJson);
-    String generatePayloadJson = Encoder.generate(payloadJson);
-    String tempString = generateHeaderJson + "." + generatePayloadJson;
 
-    return makingSignature(tempString, ServerSecreteKey);
+    // encoding(headerJson) + . + encoding(payloadJson)
+    String data = Encoder.generate(headerJson) + "." + Encoder.generate(payloadJson);
+
+    return makingSignature(data);
   }
 
-  private String makingSignature(String headerAndPayloadJsonString, String secret) {
+  /*
+  * Decoding method
+  * */
+  public TokenPayloadDto degenerate(String token) {
     try {
-      byte[] hash = secret.getBytes(StandardCharsets.UTF_8);
+      String encodedPayload = Decoder.generate(token);
+      return objectMapper.readValue(encodedPayload, TokenPayloadDto.class);
+    } catch (JsonProcessingException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  private String makingSignature(String data) {
+    try {
+
+      // HS256 algorithm works in here
+      byte[] hash = ServerSecreteKey.getBytes(StandardCharsets.UTF_8);
       Mac hmacSHA256 = Mac.getInstance("HmacSHA256");
       SecretKeySpec secretKey = new SecretKeySpec(hash, "HmacSHA256");
       hmacSHA256.init(secretKey);
 
       byte[] signedBytes = hmacSHA256.doFinal(
-          headerAndPayloadJsonString.getBytes(StandardCharsets.UTF_8));
+          data.getBytes(StandardCharsets.UTF_8));
 
       return Encoder.generate(String.valueOf(signedBytes));
     } catch (NoSuchAlgorithmException | InvalidKeyException e) {
