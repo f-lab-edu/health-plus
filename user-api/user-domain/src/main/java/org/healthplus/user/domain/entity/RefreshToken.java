@@ -26,9 +26,9 @@ public class RefreshToken {
   private String token;
 
   /*
-  * Refresh Token 만료 기간을 3달로 설정
-  * */
+   * 만료 기간은 생성 시간으로 설정하고 생성 시에 token type에 따라 시간 설정
+   * */
   @Column(name = "expired_date")
-  private LocalDateTime expiredDate = LocalDateTime.now().plusMonths(3);
+  private LocalDateTime expiredDate;
 
 }

@@ -32,31 +32,32 @@ public class Token {
 
   /*
    * 기존 Setting은 "HS256", "JWT" 입니다.
-   * Encoding method
    * */
   public static Token of(TokenPayloadDto payloadDto) {
     return new Token("HS256", "JWT", payloadDto);
   }
 
+  /*
+   * Encoding method
+   * */
   public String generate() {
-    String headerJson = null;
-    String payloadJson = null;
     try {
-      headerJson = objectMapper.writeValueAsString(header.currentTokenHeader());
-      payloadJson = objectMapper.writeValueAsString(payload.currentPayload());
+      String headerJson = objectMapper.writeValueAsString(header.currentTokenHeader());
+      String payloadJson = objectMapper.writeValueAsString(payload.currentPayload());
+
+      // encoding(headerJson) + . + encoding(payloadJson)
+      String data = Encoder.generate(headerJson) + "." + Encoder.generate(payloadJson);
+      String signature = makingSignature(data);
+      return data + "." + signature;
+
     } catch (JsonProcessingException e) {
       throw new RuntimeException(e);
     }
-
-    // encoding(headerJson) + . + encoding(payloadJson)
-    String data = Encoder.generate(headerJson) + "." + Encoder.generate(payloadJson);
-
-    return makingSignature(data);
   }
 
   /*
-  * Decoding method
-  * */
+   * Decoding method
+   * */
   public TokenPayloadDto degenerate(String token) {
     try {
       String encodedPayload = Decoder.generate(token);
@@ -68,9 +69,9 @@ public class Token {
 
   private String makingSignature(String data) {
     try {
-
+      System.out.println("makingsignature");
       // HS256 algorithm works in here
-      byte[] hash = ServerSecreteKey.getBytes(StandardCharsets.UTF_8);
+      byte[] hash = ServerSecreteKey.getBytes();
       Mac hmacSHA256 = Mac.getInstance("HmacSHA256");
       SecretKeySpec secretKey = new SecretKeySpec(hash, "HmacSHA256");
       hmacSHA256.init(secretKey);

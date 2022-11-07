@@ -5,10 +5,13 @@ import static org.healthplus.user.infrastructure.exception.ErrorCode.TOKEN_TYPE_
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
 import org.healthplus.user.infrastructure.exception.JwtException;
 import org.healthplus.user.infrastructure.security.jwt.enums.HeaderType;
 import org.healthplus.user.infrastructure.security.jwt.enums.SignatureAlgorithm;
 
+
+@Getter
 public class TokenHeader {
 
   private SignatureAlgorithm algo;

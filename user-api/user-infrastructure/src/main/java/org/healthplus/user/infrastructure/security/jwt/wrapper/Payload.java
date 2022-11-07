@@ -1,7 +1,9 @@
 package org.healthplus.user.infrastructure.security.jwt.wrapper;
 
+import lombok.Getter;
 import org.healthplus.user.domain.dto.TokenPayloadDto;
 
+@Getter
 public class Payload {
 
   private TokenPayloadDto payloadDto;
