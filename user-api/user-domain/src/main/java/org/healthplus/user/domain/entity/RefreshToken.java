@@ -31,4 +31,5 @@ public class RefreshToken {
   @Column(name = "expired_dt")
   private LocalDateTime expiredDate;
 
+  // TODO: 2022/11/08 token length vaild
 }
