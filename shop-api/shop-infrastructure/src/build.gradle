@@ -1,5 +1,5 @@
 dependencies {
-    implementation(':model')
+    implementation project(':model')
     implementation project(':shop-api:shop-domain')
     implementation project(':shop-api:shop-application')
     implementation project(':shop-api:shop-presentation')
