@@ -63,3 +63,5 @@ include(
         'order-api:order-domain',
         'order-api:order-infrastructure',
 )
+include 'customer-api'
+
