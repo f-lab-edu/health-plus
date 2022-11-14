@@ -1,0 +1,6 @@
+dependencies {
+    implementation(':model')
+    implementation project(':notification-api:notification-domain')
+    implementation project(':notification-api:notification-application')
+    implementation project(':notification-api:notification-presentation')
+}
