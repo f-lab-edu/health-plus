@@ -39,4 +39,7 @@ dependencies {
     implementation project(':delivery-api:delivery-presentation')
     implementation project(':delivery-api:delivery-application')
     implementation project(':delivery-api:delivery-infrastructure')
+
+    implementation "org.flywaydb:flyway-mysql"
+    runtimeOnly 'mysql:mysql-connector-java'
 }
