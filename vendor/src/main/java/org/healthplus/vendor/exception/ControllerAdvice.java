@@ -1,7 +1,9 @@
 package org.healthplus.vendor.exception;
 
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.TransactionException;
 import org.springframework.core.annotation.Order;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,8 +23,16 @@ public class ControllerAdvice {
   }
 
   @Order(2)
+  @ExceptionHandler(value = { SQLException.class, TransactionException.class, DataAccessException.class })
+  protected ResponseEntity<ErrorResponse> handleDatabaseException(Exception e) {
+    log.error("DatabaseException Message : {}", e.getMessage());
+    return ErrorResponse.toResponseEntity(HttpStatus.NOT_IMPLEMENTED, "데이터베이스 오류 발생");
+  }
+
+  @Order(3)
   @ExceptionHandler(value = Exception.class)
   protected ResponseEntity<ErrorResponse> handleException(Exception e) {
-    return ErrorResponse.toResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+    log.error("Exception Message : {}", e.getMessage());
+    return ErrorResponse.toResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR, "서버 에러 발생");
   }
 }
