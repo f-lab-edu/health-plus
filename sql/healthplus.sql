@@ -196,6 +196,7 @@ CREATE TABLE IF NOT EXISTS `order` (
 CREATE TABLE IF NOT EXISTS `order_lines` (
   `order_lines_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '주문 항목 PK',
   `order_id` bigint(20) NOT NULL DEFAULT 0 COMMENT '주문 PK',
+  `menu_id` bigint(20) NOT NULL DEFAULT 0 COMMENT '메뉴 PK',
   `name` varchar(50) NOT NULL DEFAULT '' COMMENT '메뉴명',
   `price` int(11) NOT NULL DEFAULT 0 COMMENT '메뉴 가격',
   `quantity` int(11) NOT NULL DEFAULT 0 COMMENT '메뉴 수량',
