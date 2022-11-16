@@ -1,5 +1,4 @@
-DROP TABLE IF EXISTS `rider`;
-CREATE TABLE `rider`
+create table if not exists `rider`
 (
     `rider_id`     bigint(20) NOT NULL AUTO_INCREMENT COMMENT '라이더 PK',
     `user_id`      bigint(20) NOT NULL DEFAULT 0 COMMENT '회원 PK',
@@ -17,26 +16,26 @@ CREATE TABLE `rider`
     UNIQUE KEY `nick` (`nick`),
     UNIQUE KEY `email` (`email`),
     UNIQUE KEY `phone_number` (`phone_number`),
-    KEY            `FK_user_TO_rider` (`user_id`)
+    FOREIGN KEY (`user_id`) REFERENCES `user` (user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 DROP TABLE IF EXISTS `delivery_history`;
-CREATE TABLE `delivery_history`
+create table if not exists `delivery_history`
 (
     `history_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '배달내역 PK',
     `rider_id`   bigint(20) NOT NULL DEFAULT 0 COMMENT '라이더 PK',
-    `content`    text        NOT NULL DEFAULT '' COMMENT '배달내역',
+    `content`    text        NOT NULL COMMENT '배달내역',
     `request`    varchar(50)          DEFAULT NULL COMMENT '요청사항',
     `city`       varchar(50) NOT NULL DEFAULT '' COMMENT '시/군/구',
     `street`     varchar(50) NOT NULL DEFAULT '' COMMENT '동/내/읍',
     `zipcode`    varchar(6)           DEFAULT NULL COMMENT '우편번호',
     `create_at`  datetime             DEFAULT NULL COMMENT '생성일자',
     PRIMARY KEY (`history_id`),
-    KEY          `FK_rider_TO_delivery_history` (`rider_id`)
+    FOREIGN KEY (`rider_id`) REFERENCES `rider` (rider_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-DROP TABLE IF EXISTS `rider_alarm`;
-CREATE TABLE `rider_alarm`
+
+create table if not exists `rider_alarm`
 (
     `alarm_id`  bigint(20) NOT NULL AUTO_INCREMENT COMMENT '라이더 알람 PK',
     `rider_id`  bigint(20) NOT NULL DEFAULT 0 COMMENT '라이더 PK',
@@ -45,5 +44,5 @@ CREATE TABLE `rider_alarm`
     `create_dt` datetime              DEFAULT NULL COMMENT '알람 생성일자',
     `read_dt`   datetime              DEFAULT NULL COMMENT '알람 확인일자',
     PRIMARY KEY (`alarm_id`),
-    KEY         `FK_rider_TO_rider_alarm` (`rider_id`) USING BTREE
+    FOREIGN KEY (`rider_id`) REFERENCES `rider` (rider_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
