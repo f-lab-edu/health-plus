@@ -21,9 +21,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "menu")
@@ -47,7 +47,7 @@ public class Menu {
   private String description;
 
   @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL, orphanRemoval = true)
-  private Set<OptionGroup> optionGroups = new HashSet<>();
+  private List<OptionGroup> optionGroups = new ArrayList<>();
 
   @JoinColumn(name = "shop_id")
   @ManyToOne(fetch = FetchType.LAZY)
@@ -64,7 +64,7 @@ public class Menu {
   private IsYn useYn;
 
   @Builder
-  public Menu(String name, Type type, Money price, String description, Set<OptionGroup> optionGroups, Category category) {
+  public Menu(String name, Type type, Money price, String description, List<OptionGroup> optionGroups, Category category) {
     this.name = name;
     this.type = type;
     this.price = price;
