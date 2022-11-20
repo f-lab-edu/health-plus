@@ -3,7 +3,6 @@ package org.healthplus.shop.domain.shop;
 import lombok.Getter;
 import org.healthplus.shop.domain.exception.MenuNotFoundException;
 import org.healthplus.shop.domain.shop.enums.IsYn;
-import org.hibernate.annotations.SortNatural;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,9 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 @Entity
 @Table(name = "shop")
@@ -36,9 +34,8 @@ public class Shop {
   private Integer minimumPrice;
   private Integer deliveryFee;
 
-  @SortNatural
   @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, orphanRemoval = true)
-  private SortedSet<Menu> menus = new TreeSet<>();
+  private List<Menu> menus = new ArrayList<>();
 
   private VendorId vendorId;
 
@@ -63,6 +60,12 @@ public class Shop {
   public void deleteMenu(Long menuId) {
     Menu menu = findMenu(menuId);
     this.menus.remove(menu);
+  }
+
+  public void changeShop(Shop from) {
+    this.business = from.business;
+    this.minimumPrice = from.minimumPrice;
+    this.deliveryFee = from.deliveryFee;
   }
 
 

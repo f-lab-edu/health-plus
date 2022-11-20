@@ -1,5 +1,6 @@
 package org.healthplus.shop.domain.vendor;
 
+import lombok.Builder;
 import lombok.Getter;
 import org.healthplus.shop.domain.shop.Shop;
 import org.healthplus.shop.domain.shop.enums.IsYn;
@@ -15,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,24 +33,14 @@ public class Vendor {
   @Column(name = "vendor_id")
   private Long id;
 
-  private transient List<Shop> shops = new ArrayList<>();
+  private String nickName;
+  private String email;
+  private String phoneNumber;
+  private String name;
+  private String password;
 
   @Embedded
   private UserId userId;
-
-  @Column(name = "nick")
-  private String nickName;
-
-  private String email;
-
-  private String phoneNumber;
-
-  private String name;
-
-  @Embedded
-  private Bank bank;
-
-  private String password;
 
   @Column(name = "create_dt")
   private LocalDateTime createdAt;
@@ -62,4 +54,18 @@ public class Vendor {
   @Enumerated(EnumType.STRING)
   private IsYn useYn;
 
+  @Builder
+  public Vendor(String nickName,
+                String email,
+                String phoneNumber,
+                String name,
+                String password,
+                UserId userId) {
+    this.nickName = nickName;
+    this.email = email;
+    this.phoneNumber = phoneNumber;
+    this.name = name;
+    this.password = password;
+    this.userId = userId;
+  }
 }
