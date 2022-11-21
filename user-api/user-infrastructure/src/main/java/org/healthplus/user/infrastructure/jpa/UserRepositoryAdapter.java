@@ -1,17 +1,16 @@
 package org.healthplus.user.infrastructure.jpa;
 
+import lombok.RequiredArgsConstructor;
 import org.healthplus.user.domain.UserRepository;
 import org.healthplus.user.domain.entity.User;
 import org.healthplus.user.infrastructure.exception.ErrorCode;
 import org.healthplus.user.infrastructure.exception.UserException;
 
+@RequiredArgsConstructor
 public class UserRepositoryAdapter implements UserRepository {
 
   private final JpaUserRepository jpaUserRepository;
 
-  public UserRepositoryAdapter(JpaUserRepository jpaUserRepository) {
-    this.jpaUserRepository = jpaUserRepository;
-  }
 
   @Override
   public User save(User user) {
