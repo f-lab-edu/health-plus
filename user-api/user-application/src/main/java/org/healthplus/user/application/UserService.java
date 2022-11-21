@@ -22,7 +22,7 @@ public class UserService {
   @Transactional
   public void signUp(String id, String nickName, String email, String password, String phoneNumber) {
 
-    if (userRepository.existUser(id)) {
+    if (userRepository.existsByEmail(id)) {
       throw new UserExistException();
     }
 
@@ -33,7 +33,7 @@ public class UserService {
   }
 
   public void login(String email, String password) {
-    User user = userRepository.findUserByEmail(email);
+    User user = userRepository.findByEmail(email);
     if (user == null) {
       throw new UserNotFoundException();
     }
