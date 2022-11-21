@@ -1,10 +1,9 @@
 package org.healthplus.user.infrastructure.jpa;
 
-import java.util.HashMap;
-import java.util.Map;
 import org.healthplus.user.domain.UserRepository;
 import org.healthplus.user.domain.entity.User;
-import org.springframework.stereotype.Component;
+import org.healthplus.user.infrastructure.exception.ErrorCode;
+import org.healthplus.user.infrastructure.exception.UserException;
 
 public class UserRepositoryAdapter implements UserRepository {
 
@@ -13,4 +12,22 @@ public class UserRepositoryAdapter implements UserRepository {
   public UserRepositoryAdapter(JpaUserRepository jpaUserRepository) {
     this.jpaUserRepository = jpaUserRepository;
   }
+
+  @Override
+  public User save(User user) {
+    return jpaUserRepository.save(user);
+  }
+
+  @Override
+  public User findByEmail(String email) {
+    return jpaUserRepository.findByEmail(email)
+        .orElseThrow(() -> new UserException(ErrorCode.USER_NOT_FOUND));
+  }
+
+  @Override
+  public boolean existsByEmail(String email) {
+    return jpaUserRepository.existsByEmail(email);
+  }
+
+
 }
