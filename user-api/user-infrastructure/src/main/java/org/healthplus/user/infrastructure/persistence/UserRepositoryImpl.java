@@ -33,7 +33,7 @@ public class UserRepositoryImpl implements UserRepository {
   }
 
   @Override
-  public User findUserById(String id) {
+  public User findUserByEmail(String id) {
     for (User user : userMap.values()) {
       if (user.getId().equals(id)) {
         return user;

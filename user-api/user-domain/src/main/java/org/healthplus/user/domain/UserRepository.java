@@ -13,5 +13,5 @@ public interface UserRepository {
 
   boolean matchPassword(String password);
 
-  User findUserById(String id);
+  User findUserByEmail(String id);
 }
