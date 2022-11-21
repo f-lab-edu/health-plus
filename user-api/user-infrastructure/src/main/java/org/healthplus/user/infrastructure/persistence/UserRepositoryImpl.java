@@ -18,9 +18,9 @@ public class UserRepositoryImpl implements UserRepository {
   }
 
   @Override
-  public boolean existUser(String id) {
+  public boolean existUser(String email) {
     for (User user : userMap.values()) {
-      if (user.getId().equals(id)) {
+      if (user.getEmail().equals(email)) {
         return true;
       }
     }
@@ -33,9 +33,9 @@ public class UserRepositoryImpl implements UserRepository {
   }
 
   @Override
-  public User findUserByEmail(String id) {
+  public User findUserByEmail(String email) {
     for (User user : userMap.values()) {
-      if (user.getId().equals(id)) {
+      if (user.getEmail().equals(email)) {
         return user;
       }
     }
