@@ -5,7 +5,9 @@ import org.healthplus.user.domain.UserRepository;
 import org.healthplus.user.domain.entity.User;
 import org.healthplus.user.infrastructure.exception.ErrorCode;
 import org.healthplus.user.infrastructure.exception.UserException;
+import org.springframework.stereotype.Repository;
 
+@Repository
 @RequiredArgsConstructor
 public class UserRepositoryAdapter implements UserRepository {
 

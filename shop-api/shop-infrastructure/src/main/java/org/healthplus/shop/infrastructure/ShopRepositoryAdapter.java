@@ -31,7 +31,7 @@ public class ShopRepositoryAdapter implements ShopRepository {
   public List<Menu> findByShopId(Long shopId) {
     return em.createQuery("select m, og, o from Menu m " +
             "join m.optionGroups og " +
-            "join og.options o where m.shopId = :shopId", Menu.class)
+            "join og.options o where m.id = :shopId", Menu.class)
             .setParameter("shopId", shopId)
             .getResultList();
   }
