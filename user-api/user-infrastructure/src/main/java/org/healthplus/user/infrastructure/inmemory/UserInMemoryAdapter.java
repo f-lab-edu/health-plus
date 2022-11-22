@@ -35,4 +35,14 @@ public class UserInMemoryAdapter implements UserRepository {
     }
     return false;
   }
+
+  @Override
+  public boolean isMatchPassword(String password) {
+    for (User user : userMap.values()) {
+      if (user.getPassword().equals(password)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

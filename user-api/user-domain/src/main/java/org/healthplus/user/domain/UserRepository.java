@@ -12,4 +12,6 @@ public interface UserRepository {
   User findByEmail(String email);
 
   boolean existsByEmail(String email);
+
+  boolean isMatchPassword(String password);
 }

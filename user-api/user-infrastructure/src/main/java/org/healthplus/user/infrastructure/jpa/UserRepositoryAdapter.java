@@ -30,5 +30,10 @@ public class UserRepositoryAdapter implements UserRepository {
     return jpaUserRepository.existsByEmail(email);
   }
 
+  @Override
+  public boolean isMatchPassword(String password) {
+    return false;
+  }
+
 
 }
