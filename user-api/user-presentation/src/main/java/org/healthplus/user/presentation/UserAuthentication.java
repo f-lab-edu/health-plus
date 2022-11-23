@@ -1,5 +1,6 @@
 package org.healthplus.user.presentation;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.healthplus.user.application.UserService;
 import org.healthplus.user.presentation.request.UserLoginRequest;
@@ -18,10 +19,11 @@ public class UserAuthentication {
   * 회원 가입
   * */
   @PostMapping("/api/auth/user/register")
-  public void register(UserRegisterRequest registerRequest) {
+  public List<String> register(UserRegisterRequest registerRequest) {
     userService.signUp(registerRequest.getEmail(), registerRequest.getName(),
         registerRequest.getEmail(),
         registerRequest.getPassword(), registerRequest.getPhoneNumber());
+    return List.of("user1");
   }
 
 
@@ -38,7 +40,7 @@ public class UserAuthentication {
    * */
   @PostMapping("/api/auth/user/login")
   public void login(UserLoginRequest loginRequest) {
-    userService.login(loginRequest.getId(), loginRequest.getPassword());
+    userService.login(loginRequest.getEmail(), loginRequest.getPassword());
   }
 
   /*
