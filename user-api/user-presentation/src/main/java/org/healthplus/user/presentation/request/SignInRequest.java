@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class UserLoginRequest {
+public class SignInRequest {
 
   private String email;
   private String password;
