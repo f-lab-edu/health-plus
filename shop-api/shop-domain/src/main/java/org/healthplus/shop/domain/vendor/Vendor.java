@@ -40,6 +40,9 @@ public class Vendor {
   private String password;
 
   @Embedded
+  private Bank bank;
+
+  @Embedded
   private UserId userId;
 
   @Column(name = "create_dt")
@@ -68,4 +71,16 @@ public class Vendor {
     this.password = password;
     this.userId = userId;
   }
+
+  public Vendor(Long id, String nickName, String email) {
+    this.id = id;
+    this.nickName = nickName;
+    this.email = email;
+  }
+
+  public void changeVendorData(Vendor from) {
+    this.nickName = from.nickName;
+    this.email = from.email;
+  }
+
 }

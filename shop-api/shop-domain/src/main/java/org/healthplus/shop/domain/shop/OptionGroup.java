@@ -56,6 +56,12 @@ public class OptionGroup {
     this.options = options;
   }
 
+  public OptionGroup(IsYn basicChoiceYn, IsYn etcChoiceYn, List<Option> options) {
+    this.basicChoiceYn = basicChoiceYn;
+    this.etcChoiceYn = etcChoiceYn;
+    this.options = options;
+  }
+
   public void addOption(Option option) {
     this.options.add(option);
     option.setOptionGroup(this);
@@ -77,6 +83,20 @@ public class OptionGroup {
     this.options.remove(option);
   }
 
+  public void changeOptionGroup(OptionGroup optionGroup) {
+    this.basicChoiceYn = optionGroup.getBasicChoiceYn();
+    this.etcChoiceYn = optionGroup.getEtcChoiceYn();
+
+    this.options.forEach(innerOption -> {
+      Option option = optionGroup.getOptions().stream()
+              .filter(outerOption -> outerOption.getId() == innerOption.getId())
+              .findAny()
+              .orElseThrow(OptionNotFoundException::new);
+
+      innerOption.changeOption(option);
+    });
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -89,4 +109,5 @@ public class OptionGroup {
   public int hashCode() {
     return Objects.hash(id);
   }
+
 }

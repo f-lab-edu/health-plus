@@ -1,5 +1,6 @@
 package org.healthplus.shop.domain.shop;
 
+import lombok.Builder;
 import lombok.Getter;
 import org.healthplus.shop.domain.shop.enums.IsYn;
 
@@ -37,6 +38,14 @@ public class Option {
   @Enumerated(EnumType.STRING)
   private IsYn useYn;
 
+  @Builder
+  public Option(Long id, String name, Money price, Integer displayOrder) {
+    this.id = id;
+    this.name = name;
+    this.price = price;
+    this.displayOrder = displayOrder;
+  }
+
   public Option(String name, Money price, Integer displayOrder) {
     this.name = name;
     this.price = price;
@@ -45,6 +54,12 @@ public class Option {
 
   public void setOptionGroup(OptionGroup optionGroup) {
     this.optionGroup = optionGroup;
+  }
+
+  public void changeOption(Option option) {
+    this.name = option.getName();
+    this.price = option.getPrice();
+    this.displayOrder = option.getDisplayOrder();
   }
 
   @Override
@@ -59,4 +74,6 @@ public class Option {
   public int hashCode() {
     return Objects.hash(name, price);
   }
+
+
 }
