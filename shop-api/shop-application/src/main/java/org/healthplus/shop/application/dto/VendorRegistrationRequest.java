@@ -5,7 +5,7 @@ import org.healthplus.shop.domain.vendor.UserId;
 import org.healthplus.shop.domain.vendor.Vendor;
 
 @Getter
-public class VendorRegistrationData {
+public class VendorRegistrationRequest {
 
   private String nickName;
   private String email;
