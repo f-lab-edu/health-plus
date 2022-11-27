@@ -17,4 +17,7 @@ public class Business {
   private String subType;
 
 
+  public void changeBusinessHour(String businessHour) {
+    this.businessHour = businessHour;
+  }
 }
