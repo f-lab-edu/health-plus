@@ -3,8 +3,9 @@ package org.healthplus.shop.application.dto;
 import lombok.Getter;
 
 @Getter
-public class VendorInquiryData {
+public class VendorRetrievalRequest {
 
+  private Long vendorId;
   private String nickName;
   private String email;
   private String phoneNumber;
