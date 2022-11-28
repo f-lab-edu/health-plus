@@ -23,7 +23,7 @@ public class UserAuthentication {
   * */
   @PostMapping("/api/auth/user/register")
   public List<String> signup(@RequestBody SignUpRequest registerRequest) {
-    userService.signUp(registerRequest.getEmail(), registerRequest.getName(),
+    userService.signUp(registerRequest.getEmail(), registerRequest.getNickName(),
         registerRequest.getEmail(),
         registerRequest.getPassword(), registerRequest.getPhoneNumber());
     return List.of("user1");

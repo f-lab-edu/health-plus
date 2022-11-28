@@ -1,12 +1,8 @@
 package org.healthplus.shop.application.convertor;
 
-import org.healthplus.shop.application.dto.VendorModificationResponse;
-import org.healthplus.shop.application.dto.VendorRetrievalResponse;
-import org.healthplus.shop.domain.vendor.Vendor;
-
 public class VendorResponseDataConvertor {
 
-  public static VendorRetrievalResponse toVendorRetrievalResponse(Vendor vendor) {
+/*  public static VendorRetrievalResponse toVendorRetrievalResponse(Vendor vendor) {
     return VendorRetrievalResponse.builder()
             .vendorId(vendor.getId())
             .name(vendor.getName())
@@ -25,5 +21,5 @@ public class VendorResponseDataConvertor {
             .phoneNumber(vendor.getPhoneNumber())
             .nickName(vendor.getNickName())
             .build();
-  }
+  }*/
 }
