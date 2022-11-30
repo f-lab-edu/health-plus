@@ -29,6 +29,10 @@ public class UserAuthentication {
     return "ok";
   }
 
+  @GetMapping("/test")
+  public String test() {
+    return "OK";
+  }
 
   /*
    * 회원 가입 확인
