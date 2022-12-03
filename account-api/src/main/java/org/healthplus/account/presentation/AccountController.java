@@ -25,13 +25,13 @@ public class AccountController {
 
   @PostMapping("/signup")
   public ApiResponse signUp(@RequestBody UserSignUpRequest request) {
-    AccountResult accountResult = accountService.signup(request.toCommand());
-    return ApiResponse.success(accountResult);
+    AccountResult signupResult = accountService.signup(request.toCommand());
+    return ApiResponse.success(signupResult);
   }
 
   @PostMapping("/signin")
-  public String signin(@RequestBody UserSignInRequest request) {
-    accountService.signin(request.toCommand());
-    return "OK";
+  public ApiResponse signin(@RequestBody UserSignInRequest request) {
+    AccountResult signinResult = accountService.signin(request.toCommand());
+    return ApiResponse.success(signinResult);
   }
 }
