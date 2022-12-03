@@ -3,6 +3,7 @@ package org.healthplus.account.infrastructure.Impl.hashmap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
 import org.healthplus.account.domain.entity.User;
 import org.healthplus.account.domain.repository.UserRepository;
@@ -25,5 +26,12 @@ public class HashMapUserRepositoryImpl implements UserRepository {
       userMap.put(user.getId(), user);
     }
     return user;
+  }
+
+  @Override
+  public User findByEmail(String userEmail) {
+    return userMap.values()
+        .stream().filter(user -> userEmail.equals(user.getEmail()))
+        .findFirst().orElse(null);
   }
 }

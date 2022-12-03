@@ -35,6 +35,6 @@ public class AccountService {
   }
 
   public void signin(SigninCommand signinCommand) {
-    log.info("does the signIn signature work? ");
+    userRepository.findByEmail(signinCommand.getEmail());
   }
 }
