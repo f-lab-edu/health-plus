@@ -9,12 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.healthplus.model.role.Role;
 
 @Entity
 @NoArgsConstructor
 @Table(name = "user")
 @Getter
+@ToString
 public class User {
 
   @Id

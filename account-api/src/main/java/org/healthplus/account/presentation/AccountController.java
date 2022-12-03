@@ -22,7 +22,7 @@ public class AccountController {
 
   @PostMapping("/register")
   public List<String> register(@RequestBody UserSignUpRequest request) {
-    accountService.register(request.toCommand());
+    accountService.signup(request.toCommand());
     return List.of("lee", "choi");
   }
 }

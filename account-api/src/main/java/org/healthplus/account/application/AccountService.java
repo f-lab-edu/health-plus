@@ -2,13 +2,23 @@ package org.healthplus.account.application;
 
 import lombok.extern.slf4j.Slf4j;
 import org.healthplus.account.application.command.SignupCommand;
+import org.healthplus.account.domain.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Slf4j
 public class AccountService {
 
-  public void register(SignupCommand toCommand) {
+  private final UserRepository userRepository;
+  @Autowired
+  public AccountService(UserRepository userRepository) {
+    this.userRepository = userRepository;
+  }
+
+  @Transactional
+  public void signup(SignupCommand signupCommand) {
     log.info("AccountService works well");
   }
 }
