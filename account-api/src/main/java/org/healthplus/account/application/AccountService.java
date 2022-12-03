@@ -1,6 +1,7 @@
 package org.healthplus.account.application;
 
 import lombok.extern.slf4j.Slf4j;
+import org.healthplus.account.application.command.SigninCommand;
 import org.healthplus.account.application.command.SignupCommand;
 import org.healthplus.account.application.result.AccountResult;
 import org.healthplus.account.domain.entity.User;
@@ -31,5 +32,9 @@ public class AccountService {
     );
     User user = userRepository.save(signupUser);
     return AccountResult.fromUser(user);
+  }
+
+  public void signin(SigninCommand signinCommand) {
+    log.info("does the signIn signature work? ");
   }
 }

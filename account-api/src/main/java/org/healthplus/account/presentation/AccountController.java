@@ -3,6 +3,7 @@ package org.healthplus.account.presentation;
 import java.util.List;
 import org.healthplus.account.application.AccountService;
 import org.healthplus.account.application.result.AccountResult;
+import org.healthplus.account.presentation.request.UserSignInRequest;
 import org.healthplus.account.presentation.request.UserSignUpRequest;
 import org.healthplus.model.result.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,11 @@ public class AccountController {
   public ApiResponse signUp(@RequestBody UserSignUpRequest request) {
     AccountResult accountResult = accountService.signup(request.toCommand());
     return ApiResponse.success(accountResult);
+  }
+
+  @PostMapping("/signin")
+  public String signin(@RequestBody UserSignInRequest request) {
+    accountService.signin(request.toCommand());
+    return "OK";
   }
 }
