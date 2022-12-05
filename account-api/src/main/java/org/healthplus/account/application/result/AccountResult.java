@@ -3,7 +3,7 @@ package org.healthplus.account.application.result;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.healthplus.account.domain.entity.User;
+import org.healthplus.account.domain.User;
 import org.healthplus.model.role.Role;
 
 

@@ -2,7 +2,7 @@ package org.healthplus.account.presentation;
 
 import org.healthplus.account.application.AccountService;
 import org.healthplus.account.application.result.AccountResult;
-import org.healthplus.account.domain.repository.AuthorizationMapper;
+import org.healthplus.account.domain.AuthorizationMapper;
 import org.healthplus.account.presentation.request.UserSignInRequest;
 import org.healthplus.account.presentation.request.UserSignUpRequest;
 import org.healthplus.model.result.ApiResponse;

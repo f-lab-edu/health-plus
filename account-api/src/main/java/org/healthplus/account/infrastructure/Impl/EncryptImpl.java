@@ -1,6 +1,6 @@
 package org.healthplus.account.infrastructure.Impl;
 
-import org.healthplus.account.domain.repository.EncryptMapper;
+import org.healthplus.account.domain.EncryptMapper;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 

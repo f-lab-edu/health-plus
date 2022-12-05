@@ -1,7 +1,7 @@
 package org.healthplus.account.infrastructure.Impl;
 
 import org.assertj.core.api.Assertions;
-import org.healthplus.account.domain.repository.EncryptMapper;
+import org.healthplus.account.domain.EncryptMapper;
 import org.healthplus.account.infrastructure.EncryptMapperStub;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

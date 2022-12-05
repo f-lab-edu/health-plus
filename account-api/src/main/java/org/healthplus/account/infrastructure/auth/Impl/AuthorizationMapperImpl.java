@@ -1,6 +1,6 @@
 package org.healthplus.account.infrastructure.auth.Impl;
 
-import org.healthplus.account.domain.repository.AuthorizationMapper;
+import org.healthplus.account.domain.AuthorizationMapper;
 import org.healthplus.model.role.Role;
 import org.springframework.stereotype.Component;
 

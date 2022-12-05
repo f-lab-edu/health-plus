@@ -1,4 +1,4 @@
-package org.healthplus.account.domain.repository;
+package org.healthplus.account.domain;
 
 public interface EncryptMapper {
 

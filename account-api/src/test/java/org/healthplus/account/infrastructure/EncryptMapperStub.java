@@ -1,6 +1,6 @@
 package org.healthplus.account.infrastructure;
 
-import org.healthplus.account.domain.repository.EncryptMapper;
+import org.healthplus.account.domain.EncryptMapper;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class EncryptMapperStub implements EncryptMapper {
