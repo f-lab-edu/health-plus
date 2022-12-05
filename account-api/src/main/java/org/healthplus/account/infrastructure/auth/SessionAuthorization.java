@@ -18,7 +18,7 @@ public class SessionAuthorization implements Authorization {
 
   private HttpSession httpSession;
 
-//  @Autowired
+  @Autowired
   public SessionAuthorization(HttpSession httpSession) {
     this.httpSession = httpSession;
   }

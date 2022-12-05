@@ -40,13 +40,14 @@ public class AccountService {
     return AccountResult.fromUser(user);
   }
 
+  @Transactional
   public AccountResult signin(SigninCommand signinCommand) {
     User findUser = userRepository.findByEmail(signinCommand.getEmail());
     if (findUser == null) {
       // domain에 관련된 예외입니다. 따라서 domain layer에 존재하는 것이 맞습니다.
       throw new EmailInfoMisMatchException("이메일이 일치하지 않습니다.");
     }
-    if (findUser.getPassword() != encryptMapper.encoder(signinCommand.getPassword())) {
+    if (!encryptMapper.isMatch(signinCommand.getPassword(), findUser.getPassword())) {
       throw new PasswordMisMatchException("패스워드가 일치하지 않습니다.");
     }
     return AccountResult.fromUser(findUser);
