@@ -1,8 +1,8 @@
 package org.healthplus.account.presentation;
 
-import java.util.List;
 import org.healthplus.account.application.AccountService;
 import org.healthplus.account.application.result.AccountResult;
+import org.healthplus.account.domain.repository.AuthorizationMapper;
 import org.healthplus.account.presentation.request.UserSignInRequest;
 import org.healthplus.account.presentation.request.UserSignUpRequest;
 import org.healthplus.model.result.ApiResponse;
@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountController {
 
   private final AccountService accountService;
+  private final AuthorizationMapper authorizationMapper;
 
   @Autowired
-  public AccountController(AccountService accountService) {
+  public AccountController(AccountService accountService, AuthorizationMapper authorizationMapper) {
     this.accountService = accountService;
+    this.authorizationMapper = authorizationMapper;
   }
 
   @PostMapping("/signup")
@@ -32,6 +34,7 @@ public class AccountController {
   @PostMapping("/signin")
   public ApiResponse signin(@RequestBody UserSignInRequest request) {
     AccountResult signinResult = accountService.signin(request.toCommand());
+
     return ApiResponse.success(signinResult);
   }
 }
