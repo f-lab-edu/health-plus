@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import org.healthplus.model.role.Role;
 
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
 public class AuthorizationCommand {
 
@@ -14,4 +13,6 @@ public class AuthorizationCommand {
   private String email;
   private Role role;
 
+  protected AuthorizationCommand() {
+  }
 }
