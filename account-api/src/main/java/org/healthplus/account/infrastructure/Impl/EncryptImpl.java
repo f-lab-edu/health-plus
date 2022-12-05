@@ -2,7 +2,9 @@ package org.healthplus.account.infrastructure.Impl;
 
 import org.healthplus.account.domain.repository.EncryptMapper;
 import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EncryptImpl implements EncryptMapper {
 
   @Override
