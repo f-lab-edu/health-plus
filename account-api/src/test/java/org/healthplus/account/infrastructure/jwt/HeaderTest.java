@@ -1,11 +1,9 @@
-package org.healthplus.account.infrastructure.wrapper;
+package org.healthplus.account.infrastructure.jwt;
 
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.healthplus.account.infrastructure.exception.ErrorCode.TOKEN_SIGNATURE_ALGORITHM_EXCEPTION;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-import org.healthplus.account.infrastructure.exception.ErrorCode;
 import org.healthplus.account.infrastructure.exception.JwtException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

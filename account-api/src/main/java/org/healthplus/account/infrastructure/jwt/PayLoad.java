@@ -1,4 +1,4 @@
-package org.healthplus.account.infrastructure.wrapper;
+package org.healthplus.account.infrastructure.jwt;
 
 import java.time.Instant;
 import lombok.Getter;

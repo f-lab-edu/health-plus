@@ -1,4 +1,4 @@
-package org.healthplus.account.infrastructure.wrapper;
+package org.healthplus.account.infrastructure.jwt;
 
 import static org.healthplus.account.infrastructure.exception.ErrorCode.TOKEN_HEADER_TYPE_EXCEPTION;
 import static org.healthplus.account.infrastructure.exception.ErrorCode.TOKEN_SIGNATURE_ALGORITHM_EXCEPTION;
