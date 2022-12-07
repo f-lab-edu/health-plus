@@ -42,4 +42,9 @@ public class AccountController {
     signinResult.addToken(token);
     return ApiResponse.success(signinResult);
   }
+
+  @PostMapping("/jwt/signin")
+  public String signinJwt(@RequestBody UserSignInRequest request) {
+    return "hello";
+  }
 }

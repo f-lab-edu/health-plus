@@ -28,7 +28,6 @@ public class AccountService {
 
   @Transactional
   public AccountResult signup(SignupCommand signupCommand) {
-    log.info("AccountService works well");
     User signupUser = new User(
         signupCommand.getName(),
         encryptMapper.encoder(signupCommand.getPassword()),
