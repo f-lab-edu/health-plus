@@ -11,7 +11,7 @@ class EncoderTest {
 
   @Test
   public void base64EncodingTest() throws Exception {
-    assertThat(Encoder.run("abc")).isEqualTo(
+    assertThat(Encoder.run("abc".getBytes(StandardCharsets.UTF_8))).isEqualTo(
         Base64.getEncoder().withoutPadding().encodeToString("abc".getBytes(
             StandardCharsets.UTF_8)));
   }

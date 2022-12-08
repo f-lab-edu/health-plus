@@ -1,5 +1,6 @@
 package org.healthplus.account.infrastructure.jwt;
 
+import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import lombok.Getter;
 import org.healthplus.account.domain.dto.TokenPayloadDto;
@@ -35,8 +36,8 @@ public class Payload {
     return this;
   }
 
-  public String PayloadEncodingProcess() {
+  public String payloadEncodingProcess() {
     String jsonTypePayload = ObjectToJsonChanger.changer(this);
-    return Encoder.run(jsonTypePayload);
+    return Encoder.run(jsonTypePayload.getBytes(StandardCharsets.UTF_8));
   }
 }

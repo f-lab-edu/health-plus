@@ -3,6 +3,7 @@ package org.healthplus.account.infrastructure.jwt;
 import static org.healthplus.account.infrastructure.exception.ErrorCode.TOKEN_HEADER_TYPE_EXCEPTION;
 import static org.healthplus.account.infrastructure.exception.ErrorCode.TOKEN_SIGNATURE_ALGORITHM_EXCEPTION;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
@@ -53,12 +54,22 @@ public class Header {
     return new Header(algo, type);
   }
 
+  public String currentAlgorithm() {
+    if (alg.name().equals("HS256")) {
+      return "HmacSHA256";
+    }
+    if (alg.name().equals("RS256")) {
+      return "RS256";
+    }
+    return "HmacSHA256";
+  }
+
   public Header currentHeader() {
     return this;
   }
 
-  public String HeaderEncodingProcess() {
+  public String headerEncodingProcess() {
     String jsonTypeHeader = ObjectToJsonChanger.changer(this);
-    return Encoder.run(jsonTypeHeader);
+    return Encoder.run(jsonTypeHeader.getBytes(StandardCharsets.UTF_8));
   }
 }
