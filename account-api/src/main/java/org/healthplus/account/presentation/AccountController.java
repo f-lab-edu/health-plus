@@ -1,5 +1,6 @@
 package org.healthplus.account.presentation;
 
+import javax.servlet.http.HttpServletRequest;
 import org.healthplus.account.application.AccountService;
 import org.healthplus.account.application.command.AuthorizationCommand;
 import org.healthplus.account.application.result.AccountResult;
@@ -46,5 +47,13 @@ public class AccountController {
   @PostMapping("/jwt/signin")
   public String signinJwt(@RequestBody UserSignInRequest request) {
     return "hello";
+  }
+
+  /*
+  * HttpServletRequest : 클라이언트의 서비스 요청 단위로 유지
+  * */
+  @PostMapping("/logout")
+  public void logout(HttpServletRequest request) {
+    accountService.logout(request);
   }
 }
