@@ -1,8 +1,7 @@
 package org.healthplus.account.infrastructure.jwt;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.assertj.core.api.Assertions;
+import org.healthplus.account.infrastructure.jwt.util.Decoder;
 import org.junit.jupiter.api.Test;
 
 class DecoderTest {

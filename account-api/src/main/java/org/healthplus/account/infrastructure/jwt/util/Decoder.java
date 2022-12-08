@@ -1,4 +1,4 @@
-package org.healthplus.account.infrastructure.jwt;
+package org.healthplus.account.infrastructure.jwt.util;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
