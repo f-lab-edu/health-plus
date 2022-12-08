@@ -21,7 +21,6 @@ public class AccountController {
   private final AccountService accountService;
   private final Authorization authorization;
 
-  @Autowired
   public AccountController(AccountService accountService, Authorization authorization) {
     this.accountService = accountService;
     this.authorization = authorization;
@@ -36,17 +35,23 @@ public class AccountController {
   @PostMapping("/signin")
   public ApiResponse signin(@RequestBody UserSignInRequest request) {
     AccountResult signinResult = accountService.signin(request.toCommand());
-    String token = authorization.login(
+    String session = authorization.login(
         new AuthorizationCommand(signinResult.getId(), signinResult.getEmail(),
             signinResult.getRole()
         ));
-    signinResult.addToken(token);
+    signinResult.addToken(session);
     return ApiResponse.success(signinResult);
   }
 
   @PostMapping("/jwt/signin")
-  public String signinJwt(@RequestBody UserSignInRequest request) {
-    return "hello";
+  public ApiResponse signinJwt(@RequestBody UserSignInRequest request) {
+    AccountResult signin = accountService.signin(request.toCommand());
+    String token = authorization.login(
+        new AuthorizationCommand(signin.getId(), signin.getEmail(),
+            signin.getRole())
+    );
+    signin.addToken(token);
+    return ApiResponse.success(signin);
   }
 
   /*

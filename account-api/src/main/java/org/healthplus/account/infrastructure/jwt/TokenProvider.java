@@ -1,6 +1,6 @@
 package org.healthplus.account.infrastructure.jwt;
 
-import org.healthplus.account.domain.dto.TokenPayloadDto;
+import org.healthplus.account.domain.vo.TokenPayloadVo;
 
 /*
  * header, payload, signature class를 갖고 token을 만들어 return합니다.
@@ -11,14 +11,14 @@ public class TokenProvider {
   private Payload payload;
   private Signature signature;
 
-  private TokenProvider(TokenPayloadDto tokenPayloadDto) {
+  private TokenProvider(TokenPayloadVo tokenPayloadVo) {
     this.header = Header.from("HS256", "JWT");
-    this.payload = Payload.of(tokenPayloadDto);
+    this.payload = Payload.of(tokenPayloadVo);
     this.signature = new Signature();
   }
 
-  public static TokenProvider from(TokenPayloadDto tokenPayloadDto) {
-    return new TokenProvider(tokenPayloadDto);
+  public static TokenProvider from(TokenPayloadVo tokenPayloadVo) {
+    return new TokenProvider(tokenPayloadVo);
   }
 
   public String generate() {

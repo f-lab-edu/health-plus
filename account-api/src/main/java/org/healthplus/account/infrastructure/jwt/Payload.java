@@ -1,9 +1,8 @@
 package org.healthplus.account.infrastructure.jwt;
 
 import java.nio.charset.StandardCharsets;
-import java.time.Instant;
 import lombok.Getter;
-import org.healthplus.account.domain.dto.TokenPayloadDto;
+import org.healthplus.account.domain.vo.TokenPayloadVo;
 import org.healthplus.account.infrastructure.jwt.util.Encoder;
 import org.healthplus.account.infrastructure.jwt.util.ObjectToJsonChanger;
 import org.healthplus.model.role.Role;
@@ -14,7 +13,6 @@ public class Payload {
   private Long userId;
   private String email;
   private Role role;
-  private Instant currentTime;
 
   private Payload() {
   }
@@ -23,13 +21,12 @@ public class Payload {
     this.userId = userId;
     this.email = email;
     this.role = role;
-    this.currentTime = Instant.now();
   }
 
-  public static Payload of(TokenPayloadDto tokenPayloadDto) {
-    return new Payload(tokenPayloadDto.getUserId(),
-        tokenPayloadDto.getEmail(),
-        tokenPayloadDto.getRole());
+  public static Payload of(TokenPayloadVo tokenPayloadVo) {
+    return new Payload(tokenPayloadVo.getUserId(),
+        tokenPayloadVo.getEmail(),
+        tokenPayloadVo.getRole());
   }
 
   public Payload currentPayload() {

@@ -1,9 +1,9 @@
 package org.healthplus.account.domain;
 
-import org.healthplus.account.domain.dto.TokenPayloadDto;
+import org.healthplus.account.domain.vo.TokenPayloadVo;
 
 public interface TokenGenerator {
 
-  String generateAccessToken(TokenPayloadDto tokenPayloadDto);
+  String generateAccessToken(TokenPayloadVo tokenPayloadVo);
 
 }
