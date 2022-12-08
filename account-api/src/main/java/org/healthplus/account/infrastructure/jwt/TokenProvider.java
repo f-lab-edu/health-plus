@@ -22,8 +22,10 @@ public class TokenProvider {
   }
 
   public String generate() {
-    header.headerEncodingProcess();
-    payload.payloadEncodingProcess();
-    return null;
+    StringBuilder sb = new StringBuilder();
+    sb.append(header.headerEncodingProcess());
+    sb.append(".");
+    sb.append(payload.payloadEncodingProcess());
+    return signature.encryptedSignature(sb.toString(), header.currentAlgorithm());
   }
 }

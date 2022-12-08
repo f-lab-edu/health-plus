@@ -14,19 +14,15 @@ public class Signature {
 
   private final static String SECRET_KEY = "HealthPlusTokenKey";
 
-  public String encryptedSignature(Header header, Payload payload) {
-    StringBuilder sb = new StringBuilder();
-    sb.append(header.headerEncodingProcess());
-    sb.append(".");
-    sb.append(payload.payloadEncodingProcess());
+  public String encryptedSignature(String message, String algorithm) {
 
     try {
-      Mac mac = Mac.getInstance(header.currentAlgorithm());
+      Mac mac = Mac.getInstance(algorithm);
       SecretKeySpec secretKeySpec = new SecretKeySpec(SECRET_KEY.getBytes(StandardCharsets.UTF_8)
-          , header.currentAlgorithm());
+          , algorithm);
       mac.init(secretKeySpec);
 
-      byte[] bytes = mac.doFinal(sb.toString().getBytes(StandardCharsets.UTF_8));
+      byte[] bytes = mac.doFinal(message.getBytes(StandardCharsets.UTF_8));
 
       return Encoder.run(bytes);
     } catch (NoSuchAlgorithmException | InvalidKeyException e) {
