@@ -7,8 +7,14 @@ public class ObjectToJsonChanger {
 
   private final static ObjectMapper obm = new ObjectMapper();
 
-  public static String changer(Object obj) throws JsonProcessingException {
-    return obm.writeValueAsString(obj);
+  public static String changer(Object obj){
+    String jsonString;
+    try {
+      jsonString = obm.writeValueAsString(obj);
+    } catch (JsonProcessingException e) {
+      throw new RuntimeException(e);
+    }
+    return jsonString;
   }
 
 }
