@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.healthplus.account.infrastructure.enums.HeaderType;
 import org.healthplus.account.infrastructure.enums.SignatureAlgorithm;
 import org.healthplus.account.infrastructure.exception.JwtException;
+import org.healthplus.account.infrastructure.jwt.util.Encoder;
+import org.healthplus.account.infrastructure.jwt.util.ObjectToJsonChanger;
 
 @Getter
 @Slf4j
@@ -53,5 +55,10 @@ public class Header {
 
   public Header currentHeader() {
     return this;
+  }
+
+  public String HeaderEncodingProcess() {
+    String jsonTypeHeader = ObjectToJsonChanger.changer(this);
+    return Encoder.run(jsonTypeHeader);
   }
 }

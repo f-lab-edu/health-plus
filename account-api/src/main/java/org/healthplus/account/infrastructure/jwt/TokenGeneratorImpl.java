@@ -8,6 +8,6 @@ public class TokenGeneratorImpl implements TokenGenerator {
 
   @Override
   public String generateAccessToken(TokenPayloadDto tokenPayloadDto) {
-    return null;
+    return TokenProvider.from(tokenPayloadDto).generate();
   }
 }
