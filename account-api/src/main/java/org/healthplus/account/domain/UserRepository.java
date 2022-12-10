@@ -8,5 +8,5 @@ public interface UserRepository {
 
   User findByEmail(String userEmail);
 
-  User findById(Long id);
+  // User findById(Long id);
 }

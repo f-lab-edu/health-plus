@@ -10,6 +10,7 @@ import org.healthplus.account.domain.exception.EmailInfoMisMatchException;
 import org.healthplus.account.domain.exception.PasswordMisMatchException;
 import org.healthplus.account.domain.EncryptMapper;
 import org.healthplus.account.domain.UserRepository;
+import org.healthplus.model.domain.EventPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,13 +22,13 @@ public class AccountService {
   private final UserRepository userRepository;
   private final EncryptMapper encryptMapper;
 
-  // private final EventPublisher eventPublisher;
+  private final EventPublisher eventPublisher;
 
-  @Autowired
-  public AccountService(UserRepository userRepository, EncryptMapper encryptMapper) {
+  public AccountService(UserRepository userRepository, EncryptMapper encryptMapper,
+      EventPublisher eventPublisher) {
     this.userRepository = userRepository;
     this.encryptMapper = encryptMapper;
-    // this.eventPublisher = eventPublisher;
+    this.eventPublisher = eventPublisher;
   }
 
   @Transactional
@@ -40,6 +41,7 @@ public class AccountService {
         signupCommand.getRole()
     );
     User user = userRepository.save(signupUser);
+    user.occurredEvents().forEach(eventPublisher::publish);
     return AccountResult.fromUser(user);
   }
 
@@ -61,7 +63,7 @@ public class AccountService {
     request.getSession().invalidate(); // 세션 종료
   }
 
-  @Transactional
+  /*@Transactional
   public void changeEmail(Long userId, String email) {
     User user = userRepository.findById(userId);
 
@@ -69,6 +71,6 @@ public class AccountService {
     user.changeEmail(email);
 
     // 생성된 이벤트를 가져와 발행
-    // user.occurredEvents().forEach(eventPublisher::publish);
-  }
+     user.occurredEvents().forEach(eventPublisher::publish);
+  }*/
 }
