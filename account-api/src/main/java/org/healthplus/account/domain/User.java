@@ -1,7 +1,6 @@
 package org.healthplus.account.domain;
 
 
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,7 +13,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.healthplus.model.domain.AggregateRoot;
-import org.healthplus.model.domain.DomainEvent;
 import org.healthplus.model.role.Role;
 
 @Entity
@@ -61,7 +59,7 @@ public class User extends AggregateRoot {
   }
 
   private void registerEvent() {
-    
+    raiseEvent(new RegisterCompletedEvent(this));
   }
 
   public void setId(Long userId) {
@@ -73,6 +71,6 @@ public class User extends AggregateRoot {
    * */
   public void changeEmail(String email) {
     this.email = email;
-    raise(new UserEmailChanged());
+    raiseEvent(new UserEmailChanged());
   }
 }

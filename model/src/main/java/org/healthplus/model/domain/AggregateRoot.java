@@ -13,7 +13,7 @@ public abstract class AggregateRoot {
 
   private final List<DomainEvent> events = new ArrayList<>();
 
-  public void raise(DomainEvent event) {
+  public void raiseEvent(DomainEvent event) {
     this.events.add(event);
   }
 
