@@ -62,7 +62,6 @@ public class AccountService {
   public void logout(HttpServletRequest request) {
     request.getSession().invalidate(); // 세션 종료
   }
-
   /*@Transactional
   public void changeEmail(Long userId, String email) {
     User user = userRepository.findById(userId);
