@@ -21,10 +21,13 @@ public class AccountService {
   private final UserRepository userRepository;
   private final EncryptMapper encryptMapper;
 
+  // private final EventPublisher eventPublisher;
+
   @Autowired
   public AccountService(UserRepository userRepository, EncryptMapper encryptMapper) {
     this.userRepository = userRepository;
     this.encryptMapper = encryptMapper;
+    // this.eventPublisher = eventPublisher;
   }
 
   @Transactional
@@ -56,5 +59,16 @@ public class AccountService {
   @Transactional
   public void logout(HttpServletRequest request) {
     request.getSession().invalidate(); // 세션 종료
+  }
+
+  @Transactional
+  public void changeEmail(Long userId, String email) {
+    User user = userRepository.findById(userId);
+
+    // user entity 안 changeEmail에서 event 생성
+    user.changeEmail(email);
+
+    // 생성된 이벤트를 가져와 발행
+    // user.occurredEvents().forEach(eventPublisher::publish);
   }
 }

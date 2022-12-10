@@ -1,6 +1,7 @@
 package org.healthplus.account.domain;
 
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,6 +13,8 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.healthplus.model.domain.AggregateRoot;
+import org.healthplus.model.domain.DomainEvent;
 import org.healthplus.model.role.Role;
 
 @Entity
@@ -19,7 +22,7 @@ import org.healthplus.model.role.Role;
 @Table(name = "user")
 @Getter
 @ToString
-public class User {
+public class User extends AggregateRoot {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,5 +55,13 @@ public class User {
 
   public void setId(Long userId) {
     id = userId;
+  }
+
+  /*
+  * DomainEvent를 통해 일관성을 맞춘다.
+  * */
+  public void changeEmail(String email) {
+    this.email = email;
+    raise(new UserEmailChanged());
   }
 }
