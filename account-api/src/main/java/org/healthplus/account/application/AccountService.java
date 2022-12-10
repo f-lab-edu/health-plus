@@ -32,7 +32,7 @@ public class AccountService {
 
   @Transactional
   public AccountResult signup(SignupCommand signupCommand) {
-    User signupUser = new User(
+    User signupUser = User.register(
         signupCommand.getName(),
         encryptMapper.encoder(signupCommand.getPassword()),
         signupCommand.getEmail(),

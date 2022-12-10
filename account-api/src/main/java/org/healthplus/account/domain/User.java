@@ -45,7 +45,7 @@ public class User extends AggregateRoot {
   @Column(name = "roles")
   private Role role;
 
-  public User(String name, String password, String email, String phoneNumber, Role role) {
+  private User(String name, String password, String email, String phoneNumber, Role role) {
     this.name = name;
     this.password = password;
     this.email = email;
@@ -53,13 +53,24 @@ public class User extends AggregateRoot {
     this.role = role;
   }
 
+  public static User register(String name, String password, String email, String phoneNumber,
+      Role role) {
+    User user = new User(name, password, email, phoneNumber, role);
+    user.registerEvent();
+    return user;
+  }
+
+  private void registerEvent() {
+    
+  }
+
   public void setId(Long userId) {
     id = userId;
   }
 
   /*
-  * DomainEvent를 통해 일관성을 맞춘다.
-  * */
+   * DomainEvent를 통해 일관성을 맞춘다.
+   * */
   public void changeEmail(String email) {
     this.email = email;
     raise(new UserEmailChanged());
