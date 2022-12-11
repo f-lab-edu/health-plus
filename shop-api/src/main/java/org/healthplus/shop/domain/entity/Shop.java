@@ -88,4 +88,12 @@ public class Shop {
     this.minimumPrice = shopData.getMinimumPrice();
     this.deliveryFee = shopData.getDeliveryFee();
   }
+
+  public void closeShop() {
+    this.shopStatus = ShopStatus.CLOSED;
+  }
+
+  public void openShop() {
+    this.shopStatus = ShopStatus.OPEN;
+  }
 }
