@@ -2,6 +2,7 @@ package org.healthplus.account.application;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.healthplus.account.application.command.AuthorizationCommand;
 import org.healthplus.account.application.result.AuthorizationResult;
 import org.healthplus.account.domain.Authorization;
@@ -13,15 +14,12 @@ import org.springframework.stereotype.Component;
  * Authorization Interface를 이용해 의존성 역전 -> 확작성 있게 설계됨
  * */
 @Component
+@RequiredArgsConstructor
 public class SessionAuthorization implements Authorization {
 
   private static final String HEALTH_PLUS_ACCOUNT_SESSION_VALUE = "HEALTH_PLUS_ACCOUNT_SESSION_VALUE";
 
-  private HttpSession httpSession;
-
-  public SessionAuthorization(HttpSession httpSession) {
-    this.httpSession = httpSession;
-  }
+  private final HttpSession httpSession;
 
   @Override
   public String login(AuthorizationCommand authorizationCommand) {

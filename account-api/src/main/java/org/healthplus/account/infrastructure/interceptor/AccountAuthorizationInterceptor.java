@@ -27,12 +27,12 @@ public class AccountAuthorizationInterceptor implements HandlerInterceptor {
       throw new NotLoggedInException("로그인이 필요한 서비스입니다.");
     }
 
-    if (currentUser.getCurrentRole().equals(Role.VENDOR)
+    if (!(currentUser.getCurrentRole().equals(Role.VENDOR)
         || currentUser.getCurrentRole().equals(Role.CUSTOMER)
-        || currentUser.getCurrentRole().equals(Role.DELIVERY_WORKER)) {
+        || currentUser.getCurrentRole().equals(Role.DELIVERY_WORKER))) {
       throw new MisMatchedRoleException("권한이 없는 사용자입니다.");
     }
-    
+
     return true;
   }
 }
