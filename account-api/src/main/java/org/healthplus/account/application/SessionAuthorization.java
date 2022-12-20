@@ -42,4 +42,9 @@ public class SessionAuthorization implements Authorization {
     }
     return AuthorizationResult.fromSessionValue(sessionValue);
   }
+
+  @Override
+  public void logout(HttpServletRequest request) {
+    request.getSession().invalidate();
+  }
 }

@@ -15,4 +15,6 @@ public interface Authorization {
   String login(AuthorizationCommand authorizationCommand);
 
   AuthorizationResult getCurrentUser(HttpServletRequest request);
+
+  void logout(HttpServletRequest request);
 }
