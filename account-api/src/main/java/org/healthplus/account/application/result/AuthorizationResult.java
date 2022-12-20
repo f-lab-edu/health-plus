@@ -9,7 +9,6 @@ import org.healthplus.model.role.Role;
 /*
 * 인가를 위한 값, 값이 변경되면 안되기에 property에 final을 붙여 사용
 * */
-@Getter
 public class AuthorizationResult {
 
   private final Long userId;
@@ -20,6 +19,10 @@ public class AuthorizationResult {
     this.userId = userId;
     this.email = email;
     this.role = role;
+  }
+
+  public Role getCurrentRole() {
+    return this.role;
   }
 
   public static AuthorizationResult fromSessionValue(SessionValueVO sessionValueVO) {
