@@ -31,4 +31,9 @@ public class TokenAuthorization implements Authorization {
   public AuthorizationResult getCurrentUser(HttpServletRequest request) {
     return null;
   }
+
+  @Override
+  public void logout(HttpServletRequest request) {
+    // TODO: 2022/12/20 token delete logic
+  }
 }
